@@ -6,7 +6,7 @@ class Hike(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='hike')
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
-    date = models.DateField()
+    hike_date = models.DateField()
     latitude = models.FloatField()
     longitude = models.FloatField()
     street = models.CharField(max_length=100)
@@ -15,6 +15,7 @@ class Hike(models.Model):
     zipcode = models.IntegerField()
     distance = models.FloatField()
     difficulty = models.FloatField()
+    created_date = models.DateField()
     picture = models.TextField()
 
     def __str__(self):

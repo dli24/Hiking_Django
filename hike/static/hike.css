@@ -1,0 +1,14 @@
+body {
+	font-family: 'Helvetica Neue', sans-serif;
+	max-width: 50em;
+	margin: auto;
+	padding: 2em 1em;
+}
+
+h1 {
+	font: inherit;
+	color: blueviolet;
+	letter-spacing: -0.05em;
+	text-decoration: none;
+	border-bottom: 1px solid black;
+}
