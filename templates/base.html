@@ -12,13 +12,15 @@
 		<link rel="stylesheet" href="{% static 'css/hike.css' %}" />
 	</head>
 	<body>
-		<h1>Hiking Made Easy</h1>
-		<nav>
-			
-		</nav>
+	
 
 		<!-- Navbar Not login -->
-		<nav class="main-navigation">
+	<div class="user-info">
+			{% if user.is_authenticated %} Welcome,
+			<a href="#">{{ user.username }}</a>
+			<a href="#">Signout</a>
+
+			<nav class="main-navigation">
 			<div class="navbar-header animated fadeInUp">
 				<a class="navbar-brand" href="#"><img src="/static/image/logo.png" alt="Hiking logo" style="width: 70px"; > </a>
 			</div>
@@ -43,6 +45,9 @@
 		</nav>
 
 		<!-- NavBar while Login -->
+		{% else %}
+		<a href="{% url 'login' %}">Login</a>
+
 		<nav class="main-navigation">
 			<div class="navbar-header animated fadeInUp">
 				<a class="navbar-brand" href="#">   <div class="container">
@@ -76,9 +81,11 @@
 				<li class="nav-list-item">
 					<a href="#" class="nav-link">Logout</a>
 				</li>
-			</ul>
-	
+			</ul>	
 		</nav>
+
+		{% endif %}
+	</div>
 
 
 
