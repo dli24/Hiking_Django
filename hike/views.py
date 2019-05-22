@@ -34,6 +34,7 @@ def hike_new(request):
 
 # show all hikes on a calendar
 def hike_calendar(request):
-    return render(request, 'hike/hike_calendar.html')
+    hikes = Hike.objects.order_by('hike_date');
+    return render(request, 'hike/hike_calendar.html', {'hikes': hikes})
 
 # USER / PROFILE VIEWS
