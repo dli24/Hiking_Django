@@ -36,5 +36,5 @@ class HikeGroup(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='hike_group')
 
     def __str__(self):
-        return self.profile
+        return self.hike.title
 
