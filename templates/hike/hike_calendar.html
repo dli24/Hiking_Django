@@ -1,0 +1,122 @@
+{% load static %}
+{# set days = [1,2,3,4,5,6] #}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Calendar MP</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{% static "calendar.css" %}">
+  </head>
+  <body>
+
+<script>
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  const navigateCal = (e) => {
+    console.log(e.path); //path[1].dataset.date || path[2].dataset.date
+    if (e.path[1].dataset.date) {
+      renderCal();
+    } else {
+      let navDate = new Date(e.path[2].dataset.date)
+      if (e.path[0].className === 'js-cal-prev btn btn-default') {
+        navDate.setMonth(navDate.getMonth()-1);
+        renderCal(navDate);
+      } else {
+        navDate.setMonth(navDate.getMonth()+1);
+        renderCal(navDate);
+      }
+    }
+  }
+
+  const renderCal = (date=new Date()) => {
+    let month = date.getMonth(),
+      year = date.getFullYear(),
+      first = new Date(year, month, 1),
+      last = new Date(year, month + 1, 0),
+      startingDay = first.getDay(),
+      thedate = new Date(year, month, 1 - startingDay),
+      todayString = new Date().toDateString(),
+      i, j;
+
+      document.getElementById('moYr').innerText = `${months[month]} ${year}`;
+      document.querySelector('.cal-nav').setAttribute('data-date', date.toDateString());
+
+      let rows = '';
+      for (j = 0; j < 6; j++) {
+        rows += '<tr>';
+        let cells = '';
+        for (i = 0; i < 7; i++) {
+          let dayClass = (thedate < first || thedate > last)? 'outside': 'current';
+          let selected = (thedate.toDateString() === todayString)? 'selected': '';
+          cells += `<td class="calendar-day ${selected} ${dayClass} js-cal-option" data-date="${thedate.toISOString()}">
+            <div class="date">${thedate.getDate()}</div>
+          </td>`;
+          thedate.setDate(thedate.getDate() + 1);
+        }
+        rows += `${cells} </tr>`;
+      }
+    document.getElementById('cal-content').innerHTML = rows;
+  }
+
+</script>
+
+
+    <table class="calendar-table table table-condensed table-tight">
+      <thead>
+        <tr>
+          <td colspan="7" style="text-align: center">
+            <table style="white-space: nowrap; width: 100%">
+              <tr>
+                <td class="cal-nav" style="text-align: left;">
+                  <span class="btn-group">
+                    <button class="js-cal-prev btn btn-default"><</button>
+                    <button class="js-cal-next btn btn-default">></button>
+                  </span>
+                  <button class="js-cal-option btn btn-default">Today</button>
+                </td>
+                <td>
+                  <span class="btn-group btn-group-lg" id="moYr">
+                  </span>
+                </td>
+              </tr>
+            </table>
+            <thead>
+              <tr class="c-weeks">
+                  <th class="c-name">
+                    Sunday
+                  </th>
+                  <th class="c-name">
+                    Monday
+                  </th>
+                  <th class="c-name">
+                    Tuesday
+                  </th>
+                  <th class="c-name">
+                    Wednesday
+                  </th>
+                  <th class="c-name">
+                    Thursday
+                  </th>
+                  <th class="c-name">
+                    Friday
+                  </th>
+                  <th class="c-name">
+                    Saturday
+                  </th>
+              </tr>
+            </thead>
+            <tbody id="cal-content">
+            </tbody>
+          </td>
+        </tr>
+      </thead>
+    </table>
+    <script>
+      renderCal();
+      document.querySelector('.js-cal-prev').addEventListener('click', navigateCal);
+      document.querySelector('.js-cal-next').addEventListener('click', navigateCal);
+      document.querySelector('.js-cal-option').addEventListener('click', navigateCal);
+    </script>
+  </body>
+</html>

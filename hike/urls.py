@@ -13,5 +13,7 @@ urlpatterns = [
   #add a new hike
   path('hike/new', views.hike_new, name='hike_new'),
 
+  # show hike calendar
+  path('hike/calendar', views.hike_calendar, name='hike_calendar'),
 
 ]
