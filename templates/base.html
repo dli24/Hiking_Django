@@ -3,6 +3,10 @@
 <html>
 	<head>
 		<title>Hiking</title>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/hike_detail.css"/>
 		<link rel="stylesheet" href="{% static 'css/hike.css' %}" />
 	</head>
 	<body>
@@ -17,6 +21,14 @@
         <div class="container">
             <p>Copyright 2019</p>
         </div>
-    </div>
+	</div>
+	
+
+    <script src="/static/script/hike_detail.js"></script>
+
+    <script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap">
+	</script>
+
 	</body>
 </html>
