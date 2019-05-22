@@ -13,8 +13,11 @@
 <script>
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+  const dateToIdStr = (inp) => {
+    return `${inp.getFullYear()}_${inp.getMonth() + 1}_${inp.getDate()}`;
+  }
+
   const navigateCal = (e) => {
-    console.log(e.path); //path[1].dataset.date || path[2].dataset.date
     if (e.path[1].dataset.date) {
       renderCal();
     } else {
@@ -49,7 +52,7 @@
         for (i = 0; i < 7; i++) {
           let dayClass = (thedate < first || thedate > last)? 'outside': 'current';
           let selected = (thedate.toDateString() === todayString)? 'selected': '';
-          cells += `<td class="calendar-day ${selected} ${dayClass} js-cal-option" data-date="${thedate.toISOString()}">
+          cells += `<td class="calendar-day ${selected} ${dayClass} js-cal-option" id="${dateToIdStr(thedate)}">
             <div class="date">${thedate.getDate()}</div>
           </td>`;
           thedate.setDate(thedate.getDate() + 1);
@@ -65,9 +68,20 @@
       title: 'super fun hike',
       description: 'we\'re going out to the way way back. gonna get lost and have a grand old time. there will be snakes, and snails. maybe even lions, tigers, and bears',
       distance: 5.6,
-      difficulty: 
+      difficulty: 3.0
     }
   ]
+
+
+  const renderEvents = () => {
+    hikes.forEach(hike => {
+      let eventEl = document.createElement('div');
+      eventEl.classList.add('event', 'begin', 'end');
+      eventEl.setAttribute('title', hike.title);
+      eventEl.innerHTML = `<a href="hikeId">${hike.title}</a>`;
+      document.getElementById(dateToIdStr(hike.hike_date)).append(eventEl);
+    })
+  }
 
 </script>
 
@@ -124,6 +138,7 @@
     </table>
     <script>
       renderCal();
+      renderEvents();
       document.querySelector('.js-cal-prev').addEventListener('click', navigateCal);
       document.querySelector('.js-cal-next').addEventListener('click', navigateCal);
       document.querySelector('.js-cal-option').addEventListener('click', navigateCal);
