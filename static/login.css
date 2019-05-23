@@ -1,0 +1,29 @@
+.loginTitle {
+    margin-left: 43%;
+    font-size: 3em;
+    font-family: 'fantasy';
+    font-weight: bolder;
+}
+.loginForm form label{
+    margin-left: 33%;
+}
+.loginForm form .username {
+    margin-left: 10px;    
+}
+.loginForm form .password {
+    margin-left: 14.5px;
+}
+.loginForm form .submit{
+    margin-top: 1em;
+    margin-left: 43%;
+    height: 2.5em;
+    width: 8em;
+    border-radius: 35px;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    -ms-border-radius: 35px;
+    -o-border-radius: 35px;
+}
+.loginForm form .submit:hover{
+    background-color: #E3E941;
+}
