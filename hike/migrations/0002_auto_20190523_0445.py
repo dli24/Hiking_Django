@@ -58,7 +58,7 @@ def seed(apps, schema_editor):
     distance = '10',
     difficulty = '2',
     created_date = '2020-09-12',
-    picture = 'https://previews.123rf.com/images/maximkabb/maximkabb1610/maximkabb161000018/64698997-hiking-trails-through-giant-redwoods-in-muir-forest-near-san-francisco-california-usa.jpg'
+    picture = 'https://s29081.pcdn.co/wp-content/uploads/2018/02/best-hikes-on-kauai-hawaii-02521.jpg.optimal.jpg'
     )
     
     hike_three = Hike(
@@ -75,7 +75,7 @@ def seed(apps, schema_editor):
     distance = '5',
     difficulty = '1',
     created_date = '2010-10-21',
-    picture = 'https://i.pinimg.com/736x/a3/ff/20/a3ff2004308b48ff11c1ffe2ae8c00c6--lovers-lane-san-francisco-california.jpg'
+    picture = 'https://static.beijinghikers.com/photos/JiankouMutianyu/Mutianyu-Great-Wall-wide_720x405.jpg'
     )
 
     hike_one.save()

@@ -1,48 +1,45 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="container profile">
-    <h1>Profile</h1>
-      <div class="row">
-          <div class="col-md-12">
-              <div class="heading">				
-                  <img src="{{ profile.picture }}" />
-              </div>
-          </div>	
-      </div>
-  <div class="card">
-    <!-- <img src="hiker1.jpg"> -->
-    <h1>{{ profile.user.username }}</h1>
-    <p class="title">{{ profile.bio }}</p>
 
-    <h3>Created Hikes ...</h3>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    </ul>
-             <h4>Created Hikes ...</h4>
-            <ul>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    </ul>
-  
-            <h4>SignedUp Hikes ...</h4>
-            <ul>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    </ul>
-  
-             <h4>Review Hikes ...</h4>
-            <ul>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-    </ul>
-    <div style="margin: 24px 0;">
-      <a href="#"><i class="fas fa-edit"></i></a> 
-      <a href="#"><i class="fas fa-trash-alt"></i></a>  
-    </div>
-   
+<div class="container profile">
+  <h1>Profile</h1>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="heading">				
+				<img src="https://image.ibb.co/cbCMvA/logo.png" />
+			</div>
+		</div>	
+	</div>
+<div class="card">
+  <img src="{{ profile.picture }}" alt="User Profile" />
+  <h1>{{ profile.user.username }}</h1>
+  <p class="title">{{ profile.bio }}</p>
+          <h4>Created Hikes ...</h4>
+          <ul>
+  <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
+  <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
+  <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
+  </ul>
+
+          <h4>SignedUp Hikes ...</h4>
+          <ul>
+  <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
+  <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
+  <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
+  </ul>
+
+          <h4>Review Hikes ...</h4>
+          <ul>
+  <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
+  <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
+  <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
+  </ul>
+  <div style="margin: 24px 0;">
+    <a href="#"><i class="fas fa-edit"></i></a> 
+    <a href="#"><i class="fas fa-trash-alt"></i></a>  
   </div>
+
+</div>
 
 
 

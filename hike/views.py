@@ -14,8 +14,9 @@ def landing(request):
 
 # show user details about a selected hike.
 # Missing functionality - selected hike with map)
-def hike_detail(request):
-  return render(request, 'hike/hike_detail.html')
+def hike_detail(request, hike_id):
+  hike = Hike.objects.get(id=hike_id)
+  return render(request, 'hike/hike_detail.html', {'hike':hike})
 
 #add a new hike
 # create a form to add a new hike
@@ -26,7 +27,8 @@ def hike_new(request):
     form = HikeForm(request.POST)
     if form.is_valid():
       hike = form.save(commit=False)
-      hike.user = request.user
+      #profile = Hike.objects.get(pk=profile.pk)
+      #hike.profile = request.user.profile
       hike.save()
       return redirect('hike_detail', pk=hike.pk)
   else:
@@ -35,7 +37,7 @@ def hike_new(request):
 
 # show all hikes on a calendar
 def hike_calendar(request):
-    hikes = Hike.objects.order_by('hike_date');
+    hikes = Hike.objects.order_by('hike_date')
     return render(request, 'hike/hike_calendar.html', {'hikes': hikes})
 
 # USER / PROFILE VIEWS
