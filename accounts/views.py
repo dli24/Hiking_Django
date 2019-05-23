@@ -54,7 +54,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('hike_detail')
+            return redirect('landing')
         else:
             return render(request, 'accounts/login.html', {'error': 'Invalid Credentials...'})
 
@@ -64,7 +64,7 @@ def login(request):
 @login_required
 def logout(request):
     auth.logout(request)
-    return redirect('hike_detail')
+    return redirect('landing')
 
 
 @login_required

@@ -14,8 +14,9 @@ def landing(request):
 
 # show user details about a selected hike.
 # Missing functionality - selected hike with map)
-def hike_detail(request):
-  return render(request, 'hike/hike_detail.html')
+def hike_detail(request, hike_id):
+  hike = Hike.objects.get(id=hike_id)
+  return render(request, 'hike/hike_detail.html', {'hike':hike})
 
 #add a new hike
 # create a form to add a new hike

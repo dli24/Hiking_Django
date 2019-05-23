@@ -1,5 +1,4 @@
 {% load static %}
-{# set days = [1,2,3,4,5,6] #}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -72,9 +71,22 @@
     }
   ]
 
+  const hikes2 = [
+    {% for hike in hikes %}
+    {
+      hike_date: new Date('{{hike.hike_date}}'),
+      title: '{{hike.title}}',
+      description: '{{hike.description}}',
+      distance: '{{distance}}',
+      difficulty: '{{difficulty}}'
+    },
+
+    {% endfor %}
+  ]
+
 
   const renderEvents = () => {
-    hikes.forEach(hike => {
+    hikes2.forEach(hike => {
       let eventEl = document.createElement('div');
       eventEl.classList.add('event', 'begin', 'end');
       eventEl.setAttribute('title', hike.title);
