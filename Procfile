@@ -1,1 +1,1 @@
-web: gunicorn project_name.wsgi
+web: gunicorn hike_django.wsgi --log-file -
