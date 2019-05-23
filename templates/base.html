@@ -42,13 +42,13 @@
 					<a href="{% url 'landing' %}" class="nav-link">Home</a>
 				</li>
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Add Hike</a>
+					<a href="{% url 'hike_new' %}" class="nav-link">Add Hike</a>
 				</li>
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Hike List</a>
+					<a href="#hikelist" class="nav-link">Hike List</a>
 				</li>
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Calendar</a>
+					<a href="{% url 'hike_calendar' %}" class="nav-link">Calender</a>
 				</li>
 				<li class="nav-list-item">
 					<a href="{% url 'profile' %}" class="nav-link">Profile</a>
@@ -74,13 +74,13 @@
 			<a class="hamburger" href=""><i class="fa fa-bars"></i></a>
 			<ul class="nav-list">
 				<li class="nav-list-item">
-					<a href="#hikelist" class="nav-link">Home</a>
+					<a href="{% url 'landing' %}" class="nav-link">Home</a>
 				</li>
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Hike List</a>
+					<a href="#hikelist" class="nav-link">Hike List</a>
 				</li>
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Calendar</a>
+					<a href="{% url 'hike_calendar' %}" class="nav-link">Calender</a>
 				</li>
 				<li class="nav-list-item">
 					<a href="{% url 'register' %}" class="nav-link">Register</a>
