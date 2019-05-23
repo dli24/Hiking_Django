@@ -51,7 +51,7 @@ def login(request):
         password = request.POST['password']
 
         user = auth.authenticate(username=username, password=password)
-
+        # profile = Profile.objects.get(user=user.pk)
         if user is not None:
             auth.login(request, user)
             return redirect('landing')
@@ -86,3 +86,4 @@ def profile(request):
     user = request.user
     profile = Profile.objects.get(user=user.pk)
     return render(request, 'accounts/profile.html', {'profile': profile})
+
