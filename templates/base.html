@@ -19,7 +19,7 @@
 	<div class="user-info">
 			{% if user.is_authenticated %} Welcome,
 			<a href="#">{{ user.username }}</a>
-			<a href="#">Signout</a>
+			<a href="{% url 'logout' %}">Signout</a>
 
 			<nav class="main-navigation">
 			<div class="navbar-header animated fadeInUp">

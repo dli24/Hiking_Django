@@ -9,7 +9,7 @@
   <div>
     <ul>
       {% for hike in hikes %}
-      <li><a>{{ hike.title }}</a></li>
+      <li><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ hike.title }}</a></li>
       {% endfor %}
     </ul>
   </div>
