@@ -1,0 +1,23 @@
+.landpage {
+    background-image: url("./landing.fc06ea05a282.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    width: 80vw;
+    margin-left: 10%;
+}
+
+.hikelist {
+    display: flex;
+    margin-top: 4%;
+    margin-left: 40%;
+    margin-bottom: 5%;
+}
+.hikelist li{
+    list-style: none;
+}
+.calender{
+    margin-left: 45%;
+    margin-bottom: 5%;
+}
