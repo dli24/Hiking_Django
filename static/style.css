@@ -22,6 +22,8 @@ a.navbar-brand {
 
 nav.main-navigation {
     position: relative;
+    padding: 30px 15px;
+    padding: 2rem 1rem;
 }
 
 nav.main-navigation ul.nav-list {
