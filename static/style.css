@@ -192,6 +192,28 @@ html,body{
     }
 
 
+
+a:link {
+    color: blue;
+    }
+    
+    /* visited link */
+a:visited {
+    color: blue;
+    }
+    
+    /* mouse over link */
+a:hover {
+    color: red;
+    }
+    
+    /* selected link */
+a:active {
+    color: yellow;
+    } 
+
+
+
 /* -------------------------
         Media Queries
     ---------------------------- */
