@@ -10,7 +10,6 @@
 		<link rel="stylesheet" href="/static/profile.css"/>
 		<link rel="stylesheet" href="/static/hike_detail.css"/>
 		<link rel="stylesheet" href="/static/style.css"/>
-		<link rel="stylesheet" href="{% static 'css/hike.css' %}" />
 		<link rel="stylesheet" href="{% static 'landing.css' %}" />
 	</head>
 	<body>
@@ -37,7 +36,7 @@
 			<a class="hamburger" href=""><i class="fa fa-bars"></i></a>
 			<ul class="nav-list">
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Home</a>
+					<a href="{% url 'landing' %}" class="nav-link">Home</a>
 				</li>
 				<li class="nav-list-item">
 					<a href="#" class="nav-link">Add Hike</a>
@@ -72,7 +71,7 @@
 			<a class="hamburger" href=""><i class="fa fa-bars"></i></a>
 			<ul class="nav-list">
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Home</a>
+					<a href="{% url 'landing' %}" class="nav-link">Home</a>
 				</li>
 				<li class="nav-list-item">
 					<a href="#" class="nav-link">Hike List</a>

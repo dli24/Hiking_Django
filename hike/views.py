@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Hike, Comments, HikeGroup
+from accounts.models import Profile
 from django.contrib.auth.decorators import login_required
 from .forms import HikeForm
 
@@ -27,17 +28,18 @@ def hike_new(request):
     form = HikeForm(request.POST)
     if form.is_valid():
       hike = form.save(commit=False)
-      #profile = Hike.objects.get(pk=profile.pk)
-      #hike.profile = request.user.profile
+      user = request.user
+      profile = Profile.objects.get(user=user.pk)
+      hike.profile = profile
       hike.save()
-      return redirect('hike_detail', pk=hike.pk)
+      return redirect('hike_detail', hike_id=hike.pk)
   else:
       form = HikeForm()
   return render(request, 'hike/hike_form.html', {'form': form})
 
 # show all hikes on a calendar
 def hike_calendar(request):
-    hikes = Hike.objects.order_by('hike_date')
+    hikes = Hike.objects.order_by('hike_date');
     return render(request, 'hike/hike_calendar.html', {'hikes': hikes})
 
 # USER / PROFILE VIEWS
