@@ -10,16 +10,16 @@
 		<link rel="stylesheet" href="/static/profile.css"/>
 		<link rel="stylesheet" href="/static/hike_detail.css"/>
 		<link rel="stylesheet" href="/static/style.css"/>
-		<link rel="stylesheet" href="{% static 'css/hike.css' %}" />
 		<link rel="stylesheet" href="{% static 'landing.css' %}" />
 	</head>
 	<body>
 	
 	<!-- NavBar while Login -->
 	<div class="user-info">
-			{% if user.is_authenticated %} Welcome,
+			{% if user.is_authenticated %} 
+			<!-- Welcome,
 			<a href="#">{{ user.username }}</a>
-			<a href="{% url 'logout' %}">Signout</a>
+			<a href="{% url 'logout' %}">Signout</a> -->
 
 		<nav class="main-navigation">
 			<div class="navbar-header animated fadeInUp">
@@ -49,10 +49,10 @@
 					<a href="#" class="nav-link">Calender</a>
 				</li>
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Profile</a>
+					<a href="{% url 'profile' %}" class="nav-link">Profile</a>
 				</li>
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Logout</a>
+					<a href="{% url 'logout' %}" class="nav-link">Logout</a>
 				</li>
 			</ul>	
 		</nav>
@@ -63,7 +63,7 @@
 
 			<!-- Navbar Not login -->
 		{% else %}
-		<a href="{% url 'login' %}">Login</a>
+		<!-- <a href="{% url 'login' %}">Login</a> -->
 
 		<nav class="main-navigation">
 			<div class="navbar-header animated fadeInUp">
@@ -72,7 +72,7 @@
 			<a class="hamburger" href=""><i class="fa fa-bars"></i></a>
 			<ul class="nav-list">
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Home</a>
+					<a href="#hikelist" class="nav-link">Home</a>
 				</li>
 				<li class="nav-list-item">
 					<a href="#" class="nav-link">Hike List</a>
@@ -81,10 +81,10 @@
 					<a href="#" class="nav-link">Calender</a>
 				</li>
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Register</a>
+					<a href="{% url 'register' %}" class="nav-link">Register</a>
 				</li>
 				<li class="nav-list-item">
-					<a href="#" class="nav-link">Login</a>
+					<a href="{% url 'login' %}" class="nav-link">Login</a>
 				</li>
 			</ul>
 		</nav>
