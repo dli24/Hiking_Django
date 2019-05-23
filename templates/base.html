@@ -7,47 +7,19 @@
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/profile.css"/>
 		<link rel="stylesheet" href="/static/hike_detail.css"/>
-		<link rel="stylesheet" href="/static/style.css">
+		<link rel="stylesheet" href="/static/style.css"/>
 		<link rel="stylesheet" href="{% static 'css/hike.css' %}" />
 		<link rel="stylesheet" href="{% static 'landing.css' %}" />
 	</head>
 	<body>
 	
-
-		<!-- Navbar Not login -->
+	<!-- NavBar while Login -->
 	<div class="user-info">
 			{% if user.is_authenticated %} Welcome,
 			<a href="#">{{ user.username }}</a>
 			<a href="{% url 'logout' %}">Signout</a>
-
-			<nav class="main-navigation">
-			<div class="navbar-header animated fadeInUp">
-				<a class="navbar-brand" href="#"><img src="/static/image/logo.png" alt="Hiking logo" style="width: 70px"; > </a>
-			</div>
-			<a class="hamburger" href=""><i class="fa fa-bars"></i></a>
-			<ul class="nav-list">
-				<li class="nav-list-item">
-					<a href="#" class="nav-link">Home</a>
-				</li>
-				<li class="nav-list-item">
-					<a href="#" class="nav-link">Hike List</a>
-				</li>
-				<li class="nav-list-item">
-					<a href="#" class="nav-link">Calender</a>
-				</li>
-				<li class="nav-list-item">
-					<a href="#" class="nav-link">Register</a>
-				</li>
-				<li class="nav-list-item">
-					<a href="#" class="nav-link">Login</a>
-				</li>
-			</ul>
-		</nav>
-
-		<!-- NavBar while Login -->
-		{% else %}
-		<a href="{% url 'login' %}">Login</a>
 
 		<nav class="main-navigation">
 			<div class="navbar-header animated fadeInUp">
@@ -56,7 +28,7 @@
 				<div class="image_outer_container">
 			<div class="green_icon"></div>
 					<div class="image_inner_container">
-						<img src="/static/image/hiker1.1.png" style=" width:60px; height:60px;">
+						<img src="{{ profile.picture }}" alt="User Profile" style=" width:60px; height:60px;"/>
 					</div>
 				</div>
 			</div>
@@ -85,6 +57,38 @@
 			</ul>	
 		</nav>
 
+
+
+	
+
+			<!-- Navbar Not login -->
+		{% else %}
+		<a href="{% url 'login' %}">Login</a>
+
+		<nav class="main-navigation">
+			<div class="navbar-header animated fadeInUp">
+				<a class="navbar-brand" href="#"><img src="/static/image/logo.png" alt="Hiking logo" style="width: 70px"; > </a>
+			</div>
+			<a class="hamburger" href=""><i class="fa fa-bars"></i></a>
+			<ul class="nav-list">
+				<li class="nav-list-item">
+					<a href="#" class="nav-link">Home</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="#" class="nav-link">Hike List</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="#" class="nav-link">Calender</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="#" class="nav-link">Register</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="#" class="nav-link">Login</a>
+				</li>
+			</ul>
+		</nav>
+
 		{% endif %}
 	</div>
 
@@ -94,11 +98,24 @@
 		{% block content %} {% endblock %}
 
 		{# The Footer #}
-    <div class="footer">
+    <!-- <div class="footer">
         <div class="container">
             <p>Copyright 2019</p>
         </div>
-	</div>
+	</div> -->
+
+	<footer>
+		<div class="wrap">
+			<div class="social-links">
+				<a href=""><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+				<a href=""><i class="fab fa-twitter-square" aria-hidden="true"></i></a>
+				<a href=""><i class="fab fa-instagram" aria-hidden="true"></i></a>
+			</div>
+		</div>
+		<p class="copyright">&copy;2019 Hiking MRDP</p>
+    <p class="mountarin"></p>
+	</footer>
+  
 	
 
     <script src="/static/script/hike_detail.js"></script>
