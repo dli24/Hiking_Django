@@ -220,6 +220,8 @@ a:active {
 /* ----------------------------------------
                 Footer
 ------------------------------------------- */
+
+
 footer {
 	overflow: auto;
 
@@ -247,6 +249,7 @@ footer .wrap {
 	padding: 1rem 0 .2rem;
     text-align: center;
 }
+
 
 
 /* mountarin */
@@ -297,3 +300,8 @@ html{
 
     }
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> sprint19

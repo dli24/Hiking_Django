@@ -8,11 +8,29 @@
 		<title>Happy Hiking - {% block titleContent %}{% endblock %}</title>
 
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<<<<<<< HEAD
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<link rel="stylesheet" href="{% static 'style.css' %}"/>
 		{% block cssLink %}{% endblock %}
 	</head>
 	<body>
+=======
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="/static/landing_page.css">
+		<link rel="stylesheet" href="/static/profile.css"/>
+		<link rel="stylesheet" href="/static/hike_detail.css"/>
+		<link rel="stylesheet" href="/static/style.css"/>
+		<!-- <link rel="stylesheet" href="{% static 'landing.css' %}" /> -->
+	</head>
+	<body>
+	
+	<!-- NavBar while Login -->
+	<div class="user-info">
+			{% if user.is_authenticated %} 
+		
+>>>>>>> sprint19
 
 		<!-- NavBar while Login -->
 		<div class="user-info">
@@ -28,6 +46,7 @@
 						</div>
 					</div>
 				</div>
+<<<<<<< HEAD
 			</div> </a>
 				</div>
 				<a class="hamburger" href=""><i class="fa fa-bars"></i></a>
@@ -91,6 +110,82 @@
 					<a href=""><i class="fab fa-twitter-square" aria-hidden="true"></i></a>
 					<a href=""><i class="fab fa-instagram" aria-hidden="true"></i></a>
 				</div>
+=======
+			</div>
+		</div> </a>
+			</div>
+			<a class="hamburger" href=""><i class="fa fa-bars"></i></a>
+			<ul class="nav-list">
+				<li class="nav-list-item">
+					<a href="{% url 'landing' %}" class="nav-link">Home</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="{% url 'hike_new' %}" class="nav-link">Add Hike</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="#hikelist" class="nav-link">Hike List</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="{% url 'hike_calendar' %}" class="nav-link">Calender</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="{% url 'profile' %}" class="nav-link">Profile</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="{% url 'logout' %}" class="nav-link">Logout</a>
+				</li>
+			</ul>	
+		</nav>
+
+
+
+	
+
+			<!-- Navbar Not login -->
+		{% else %}
+
+		<nav class="main-navigation">
+			<div class="navbar-header animated fadeInUp">
+				<a class="navbar-brand" href="#"><img src="/static/image/logo.png" alt="Hiking logo" style="width: 70px"; > </a>
+			</div>
+			<a class="hamburger" href=""><i class="fa fa-bars"></i></a>
+			<ul class="nav-list">
+				<li class="nav-list-item">
+					<a href="{% url 'landing' %}" class="nav-link">Home</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="#hikelist" class="nav-link">Hike List</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="{% url 'hike_calendar' %}" class="nav-link">Calender</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="{% url 'register' %}" class="nav-link">Register</a>
+				</li>
+				<li class="nav-list-item">
+					<a href="{% url 'login' %}" class="nav-link">Login</a>
+				</li>
+			</ul>
+		</nav>
+
+		{% endif %}
+	</div>
+
+
+
+
+		{% block content %} {% endblock %}
+
+		{# The Footer #}
+
+
+	<footer>
+		<div class="wrap">
+			<div class="social-links">
+				<a href=""><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+				<a href=""><i class="fab fa-twitter-square" aria-hidden="true"></i></a>
+				<a href=""><i class="fab fa-instagram" aria-hidden="true"></i></a>
+>>>>>>> sprint19
 			</div>
 			<p class="copyright">&copy;2019 Hiking MRDP</p>
 	    <p class="mountarin"></p>
