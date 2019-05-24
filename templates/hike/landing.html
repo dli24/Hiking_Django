@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} 
+
 
 <!-- hero -->
 
@@ -29,7 +30,6 @@
     <!-- upcomming -->
     <div class="content">
       <div class="ban-bottom-w3l">
-        <div class="container">
           <div class="row grid-divider col1">
             {% for hike in hikes %}    
             <div class="col-sm-4">
@@ -46,10 +46,10 @@
             </div>
             {% endfor %}
 
-      </div>
-      </div>
         </div>
       </div>
+    </div>
+      
 
       <div class="calender-landing">
         <h4> <a href="{% url 'hike_calendar' %}" class="nav-link">Calender</a></h4>
