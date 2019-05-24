@@ -23,8 +23,6 @@
 
 /* colum */
 
-
-
 .col-padding p,ul{
     font-family: "Times New Roman", Times, serif;
     font-size: 18px;
@@ -43,6 +41,12 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+
+.calender-landing{
+  text-align: center;
+}
+
 
 /* Tablet and bigger */
 @media ( min-width: 768px ) {
