@@ -38,7 +38,9 @@ def register(request):
                     user = User.objects.create_user(
                         username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                     user.save()
-                    return redirect('profile_create')
+                    if user is not None:
+                        auth.login(request, user)
+                        return redirect('profile_create')
         else:
             return render(request, 'accounts/register.html', {'error': 'Passwords do not match'})
     else:

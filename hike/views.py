@@ -16,7 +16,7 @@ def landing(request):
   hikes = Hike.objects.all()
   if request.user.is_authenticated:
     user = request.user
-    profile = Profile.objects.get(id=user.pk)
+    profile = Profile.objects.get(user=user.pk)
     return render(request, 'hike/landing.html', {'profile': profile,'hikes':hikes})
   else:
     return render(request, 'hike/landing.html', {'hikes':hikes})
@@ -27,7 +27,7 @@ def hike_detail(request, hike_id):
   hike = Hike.objects.get(id=hike_id)
   if request.user.is_authenticated:
     user = request.user
-    profile = Profile.objects.get(id=user.pk)
+    profile = Profile.objects.get(user=user.pk)
     return render(request, 'hike/hike_detail.html', {'profile': profile,'hike':hike})
   else:
     return render(request, 'hike/hike_detail.html', {'hike':hike})

@@ -1,11 +1,13 @@
 {% extends 'base.html' %} {% block content%}
 
 <div class="profileEdit">
+	<h3>CREATE A PROFILE</h3>
 	<form method="POST">
 		{% csrf_token %}
 		<!-- {{ form.as_p }} -->
 		<div>
 			<label for="bio">Please add your Bio</label>
+			<br />
 			<input class="bio"
 					type="text"
 					name="bio"
@@ -14,6 +16,7 @@
 		</div>
 		<div>
 			<label for="picture">Please input your Profile Picture in URL format</label>
+			<br />
 			<input class="picture"
 					type="text"
 					name="picture"
