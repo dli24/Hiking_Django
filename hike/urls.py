@@ -16,4 +16,7 @@ urlpatterns = [
   # show hike calendar
   path('hike/calendar', views.hike_calendar, name='hike_calendar'),
 
+  # add a comment to a hike
+  path('hike/comment/<int:pk>', views.comment_new, name='comment_new')
+
 ]
