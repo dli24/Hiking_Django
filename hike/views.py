@@ -16,7 +16,7 @@ def landing(request):
   hikes = Hike.objects.all()
   if request.user.is_authenticated:
     user = request.user
-    profile = Profile.objects.get(id=user.pk)
+    profile = Profile.objects.get(user=user.pk)
     return render(request, 'hike/landing.html', {'profile': profile,'hikes':hikes})
   else:
     return render(request, 'hike/landing.html', {'hikes':hikes})
@@ -56,7 +56,12 @@ def hike_new(request):
 # show all hikes on a calendar
 def hike_calendar(request):
     hikes = Hike.objects.order_by('hike_date')
-    return render(request, 'hike/hike_calendar.html', {'hikes': hikes})
+    if request.user.is_authenticated:
+        user = request.user
+        profile = Profile.objects.get(id=user.pk)
+        return render(request, 'hike/hike_calendar.html', {'profile': profile, 'hikes': hikes})
+    else:
+        return render(request, 'hike/hike_calendar.html', {'hikes': hikes})
 
 #add a comment
 @login_required

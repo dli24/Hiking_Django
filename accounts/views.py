@@ -38,7 +38,9 @@ def register(request):
                     user = User.objects.create_user(
                         username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                     user.save()
-                    return redirect('hike_detail')
+                    if user is not None:
+                        auth.login(request, user)
+                        return redirect('profile_create')
         else:
             return render(request, 'accounts/register.html', {'error': 'Passwords do not match'})
     else:
@@ -75,15 +77,26 @@ def profile_create(request):
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
-            return redirect('hike_detail', pk=profile.pk)
+            return redirect('landing')
     else:
         form = ProfileForm()
     return render(request, 'accounts/profile_form.html', {'form': form})
 
 
 @login_required
-def profile(request):
+def profile(request, user_id):
     user = request.user
-    profile = Profile.objects.get(user=user.pk)
+    profile = Profile.objects.get(user=user_id)
     return render(request, 'accounts/profile.html', {'profile': profile})
 
+@login_required
+def profile_edit(request, user_id):
+    profile = Profile.objects.get(user=user_id)
+    if request.method == "POST":
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            profile = form.save()
+            return redirect('profile', user_id=user_id)
+    else:
+        form = ProfileForm(instance=profile)
+        return render(request, 'accounts/profile_form.html', {'form':form})

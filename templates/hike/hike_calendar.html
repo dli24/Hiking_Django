@@ -1,14 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Calendar MP</title>
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="{% static "calendar.css" %}">
-  </head>
-  <body>
-
+{% extends 'base.html' %} {% block content %}
+<!-- link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" -->
 <script>
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -59,22 +50,14 @@
         rows += `${cells} </tr>`;
       }
     document.getElementById('cal-content').innerHTML = rows;
+    renderEvents();
   }
 
   const hikes = [
-    {
-      hike_date: new Date(),
-      title: 'super fun hike',
-      description: 'we\'re going out to the way way back. gonna get lost and have a grand old time. there will be snakes, and snails. maybe even lions, tigers, and bears',
-      distance: 5.6,
-      difficulty: 3.0
-    }
-  ]
-
-  const hikes2 = [
     {% for hike in hikes %}
     {
       hike_date: new Date('{{hike.hike_date}}'),
+      hike_id: '{{hike.id}}',
       title: '{{hike.title}}',
       description: '{{hike.description}}',
       distance: '{{distance}}',
@@ -86,11 +69,11 @@
 
 
   const renderEvents = () => {
-    hikes2.forEach(hike => {
+    hikes.forEach(hike => {
       let eventEl = document.createElement('div');
       eventEl.classList.add('event', 'begin', 'end');
       eventEl.setAttribute('title', hike.title);
-      eventEl.innerHTML = `<a href="hikeId">${hike.title}</a>`;
+      eventEl.innerHTML = `<a href="/hike/${hike.hike_id}">${hike.title}</a>`;
       document.getElementById(dateToIdStr(hike.hike_date)).append(eventEl);
     })
   }
@@ -150,10 +133,9 @@
     </table>
     <script>
       renderCal();
-      renderEvents();
       document.querySelector('.js-cal-prev').addEventListener('click', navigateCal);
       document.querySelector('.js-cal-next').addEventListener('click', navigateCal);
       document.querySelector('.js-cal-option').addEventListener('click', navigateCal);
     </script>
-  </body>
-</html>
+
+    {% endblock %}

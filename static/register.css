@@ -1,0 +1,49 @@
+.registerTitle{
+    margin-left: 40%;
+    font-size: 3em;
+    font-family: 'fantasy';
+    font-weight: bolder;
+}
+
+.registerForm form label{
+    margin-left: 30%;
+}
+.registerForm form .firstName{
+    margin-left: 60px;
+}
+
+.registerForm form .lastName{
+    margin-left: 61px;
+}
+
+.registerForm form .email{
+    margin-left: 100px;
+}
+
+.registerForm form .username{
+    margin-left: 64px;
+}
+
+.registerForm form .password{
+    margin-left: 69px;
+}
+
+.registerForm form .password2{
+    margin-left: 8px;
+}
+.registerForm form .submit{
+    margin-top: 1em;
+    margin-left: 42%;
+    height: 2.5em;
+    width: 10em;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+.registerForm form .submit:hover{
+    background-color: #4169e1;
+    color: white;
+}
