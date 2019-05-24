@@ -8,4 +8,12 @@ class HikeForm(forms.ModelForm):
         model = Hike
         fields = ('title', 'description', 'street', 'city', 'zipcode')
 
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comments
+        fields = ('body', 'rating')
+
+
+
 

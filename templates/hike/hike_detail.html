@@ -12,7 +12,26 @@
 	
 	<p>{{ hike.description }}</p>
 </div>
+<div>
+	<h3><a href="{% url 'comment_new' pk=hike.pk %}">(+) Add Comment</a></h3>
+	<ul>
+		{% for comment in comments %}
+		<li>
+				<h4>Comment Added</h4>
+				{{ comment.body }}
+				
+				<h4>Hike rating</h4>
+				{{ comment.rating }}
+			
+		</li>
+		{% endfor %}
+	</ul>
 	
+</div>
+<div>
+		<h3><a href="#">(+) Join Hike</a></h3>
+</div>
+
 	
 	
 	<!-- Google  Map -->
