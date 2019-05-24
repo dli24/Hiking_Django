@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block titleContent %}Calendar{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'calendar.css' %}" />{% endblock %}
+
+{% block content %}
 <!-- link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" -->
 <script>
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
