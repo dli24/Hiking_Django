@@ -1,7 +1,9 @@
 /* ---------------------
         NavBar NOT login
 -------------------------*/
-
+html {
+  scroll-behavior: smooth;
+}
 body {
     margin: 0;
     padding: 0;
@@ -97,8 +99,8 @@ a.nav-link {
     animation-delay: 1.5s;
 }
 
-/*---------------------- 
-        Animation 
+/*----------------------
+        Animation
 ------------------------*/
 
 @keyframes fadeInUp {
@@ -148,7 +150,7 @@ a.nav-link {
 
 
 /*--------------------------
-        logo picture 
+        logo picture
 ---------------------------  */
 
 html,body{
@@ -169,8 +171,8 @@ html,body{
 .image_inner_container{
     border-radius: 50%;
     padding: 3px;
-    background: #833ab4; 
-    background: -webkit-linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4); 
+    background: #833ab4;
+    background: -webkit-linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4);
     background: linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4);
 }
 .image_inner_container img{
@@ -198,21 +200,21 @@ html,body{
 a:link {
     color: blue;
     }
-    
+
     /* visited link */
 a:visited {
     color: blue;
     }
-    
+
     /* mouse over link */
 a:hover {
     color: red;
     }
-    
+
     /* selected link */
 a:active {
     color: yellow;
-    } 
+    }
 
 
 /* ----------------------------------------
@@ -227,7 +229,7 @@ footer .wrap {
     text-align: center;
     padding: 30px 15px;
     padding: 2rem 1rem;
-    
+
 }
 
 .social-links a {
@@ -280,7 +282,7 @@ html{
         display: none;
     }
 
-    
+
 
     .hamburger{
         /* background: #000; */
@@ -292,6 +294,6 @@ html{
         position: absolute;
         top: 10px;
         right: 2px;
-        
+
     }
 }

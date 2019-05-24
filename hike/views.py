@@ -52,7 +52,12 @@ def hike_new(request):
 
 # show all hikes on a calendar
 def hike_calendar(request):
-    hikes = Hike.objects.order_by('hike_date')
-    return render(request, 'hike/hike_calendar.html', {'hikes': hikes})
+    hikes = Hike.objects.order_by('hike_date');
+    if request.user.is_authenticated:
+        user = request.user
+        profile = Profile.objects.get(id=user.pk)
+        return render(request, 'hike/hike_calendar.html', {'profile': profile, 'hikes': hikes})
+    else:
+        return render(request, 'hike/hike_calendar.html', {'hikes': hikes})
 
 # USER / PROFILE VIEWS
