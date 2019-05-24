@@ -1,4 +1,13 @@
-{% extends 'base.html' %} {% block content %} 
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block titleContent %}Welcome{% endblock %}
+
+{% block cssLink %}<link rel="stylesheet" href="{% static 'landing_page.css' %}" />
+{% endblock %}
+
+{% block content %} 
 
 
 <!-- hero -->
