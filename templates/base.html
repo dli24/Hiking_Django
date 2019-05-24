@@ -45,7 +45,7 @@
 						<a href="{% url 'hike_calendar' %}" class="nav-link">Calendar</a>
 					</li>
 					<li class="nav-list-item">
-						<a href="{% url 'profile' %}" class="nav-link">Profile</a>
+						<a href="{% url 'profile' user_id=user.id%}" class="nav-link">Profile</a>
 					</li>
 					<li class="nav-list-item">
 						<a href="{% url 'logout' %}" class="nav-link">Logout</a>
