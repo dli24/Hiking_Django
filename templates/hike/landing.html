@@ -1,21 +1,95 @@
 {% extends 'base.html' %} {% block content %}
-<div class="landpagewrapper">
-  <div class="landpage"></div>
 
-  <div class="hikelist">
-  <div>
-    <h3 id=hikelist>Hikes:</h3>
-  </div>
-  <div>
-    <ul>
-      {% for hike in hikes %}
-      <li><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ hike.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
-  <div class="calender">
-    <h4>Calender</h4>
-  </div>
-</div>
+
+
+
+
+<!-- hero -->
+
+<div class="main-landing">
+    <img  src="/static/image/hiker-group.jpg" alt="hiker-group" >
+    <h1>Welcome to ........</h1>
+    
+    <p>
+    
+    Why do we use it?
+    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+    
+    
+    5
+      paragraphs
+      words
+      bytes
+      lists
+      Start with 'Lorem
+    ipsum dolor sit amet...'
+    </p>
+    
+    <h3>Up Comming ......</h3>
+    </div>
+    
+    
+    
+    <!-- upcomming -->
+      <div class="content">
+        <div class="ban-bottom-w3l">
+      <div class="container">
+      <div class="row grid-divider col1">
+      <div class="col-sm-4">
+        <div class="col-padding">
+          <img class="img-responsive" src="/static/image/beach.jpg"><br>
+          <h3>Hike1</h3>
+          {% for hike in hikes %}
+          <h3><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ hike.title }}</a></h3>
+          {% endfor %}
+      <ul>
+      <li><strong> Name : </strong> Contrary to popular belief, Lorem Ipsum is not</li>
+      <li><strong> Day - Time : </strong> 1/2/2019 at 9 am-12 pm</li>
+      <li><strong> Description : </strong> Contrary to popular belief, Lorem Ipsum is not</li>
+      <li><strong> Difficulty : </strong> Contrary to popular belief, Lorem Ipsum is not</li>
+      </ul>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="col-padding">
+        <img class="img-responsive" src="/static/image/sand.jpg"><br>
+        <h3>Hike2</h3>
+        {% for hike in hikes %}
+        <h3><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ hike.title }}</a></h3>
+        {% endfor %}
+      <ul>
+      <li><strong> Name : </strong> Contrary to popular belief, Lorem Ipsum is not</li>
+      <li><strong> Day - Time : </strong> 1/3/2019 at 9 am-12 pm</li>
+      <li><strong> Description : </strong> Contrary to popular belief, Lorem Ipsum is not</li>
+      <li><strong> Difficulty : </strong> Contrary to popular belief, Lorem Ipsum is not</li>
+      </ul>
+        </div>
+      </div>
+      <div class="col-sm-4">
+      <div class="col-padding">
+        <img class="img-responsive" src="/static/image/new-zealand.jpg"><br>
+        <h3>Hike3</h3>
+        {% for hike in hikes %}
+        <h3><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ hike.title }}</a></h3>
+        {% endfor %}
+      <ul>
+      <li><strong> Name : </strong> Contrary to popular belief, Lorem Ipsum is not</li>
+      <li><strong> Day - Time : </strong> 1/4/2019 at 9 am-12 pm</li>
+      <li><strong> Description : </strong> Contrary to popular belief, Lorem Ipsum is not</li>
+      <li><strong> Difficulty : </strong> Contrary to popular belief, Lorem Ipsum is not</li>
+      </ul>
+        </div>
+      </div>
+
+      </div>
+      </div>
+        </div>
+      </div>
+
+      <div class="calender">
+        <h4> <a href="{% url 'hike_calendar' %}" class="nav-link">Calender</a></h4>
+      </div>
+
+
+
 {% endblock %}
