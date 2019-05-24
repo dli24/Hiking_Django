@@ -28,7 +28,9 @@ def hike_detail(request, hike_id):
   if request.user.is_authenticated:
     user = request.user
     profile = Profile.objects.get(id=user.pk)
-    return render(request, 'hike/hike_detail.html', {'profile': profile,'hike':hike})
+    comments = Comments.objects.filter(hike=hike_id)
+    hike_group = HikeGroup.objects.filter(hike=hike_id)
+    return render(request, 'hike/hike_detail.html', {'profile': profile,'hike':hike, 'comments': comments, 'user': user})
   else:
     return render(request, 'hike/hike_detail.html', {'hike':hike})
 
@@ -73,3 +75,27 @@ def comment_new(request, pk):
     else:
         form = CommentForm()
     return render(request, 'hike/comment_form.html', {'form': form, 'hike': hike})
+
+def comment_detail(request, hike_id):
+  comment = Comments.objects.get(id=hike_id)
+  if request.user.is_authenticated:
+    user = request.user
+    profile = Profile.objects.get(id=user.pk)
+    return render(request, 'hike/hike_detail.html', {'hike': hike,'comment':comment})
+  else:
+    return render(request, 'hike/hike_detail.html', {'hike':hike})
+
+
+# @login_required
+# def hike_join(request, pk):
+#   hike = Hike.objects.get(pk=pk)
+#   user = request.user
+#   profile = Profile.objects.get(user=user.pk)
+#   hike_group.hike = hike
+#   hike_group.profile = profile
+#   hike_group.save()
+#   return render(request, 'hike/hike_detail.html', {'user':user})
+  
+
+
+

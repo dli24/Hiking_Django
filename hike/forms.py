@@ -15,3 +15,5 @@ class CommentForm(forms.ModelForm):
         fields = ('body', 'rating')
 
 
+
+
