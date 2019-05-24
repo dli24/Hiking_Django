@@ -25,5 +25,6 @@
     -o-border-radius: 35px;
 }
 .loginForm form .submit:hover{
-    background-color: #E3E941;
+    background-color: #4169e1;
+    color: white;
 }
