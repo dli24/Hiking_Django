@@ -1,4 +1,13 @@
-{% extends 'base.html' %} {% block content %}
+
+{% extends 'base.html' %}
+{% load static %}
+{% block titleContent %}{{ hike.title }}{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'hike_detail.css' %}" />{% endblock %}
+{% block scripts %}
+<script src="{% static 'script/hike_detail.js' %}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"></script>
+{% endblock %}
+{% block content %}
 
 
 	<!-- main -->
