@@ -9,12 +9,7 @@
 
 
 
-<h1>Profile</h1>
-        <div class="col-md-12">
-                <div class="heading">				
-                        <img src="https://image.ibb.co/cbCMvA/logo.png" />
-                </div>
-        </div>	
+<h1>Profile</h1>	
 <div class="card">
 <img src="{{ profile.picture }}" alt="User Profile" />
 <h1>{{ profile.user.username }}</h1>
@@ -40,9 +35,8 @@
 <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
 <li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
 </ul>
-<div style="margin: 24px 0;">
-<a href="{% url 'profile_edit' user_id=profile.user.id %}"><i class="fas fa-edit"></i></a> 
-<a href="#"><i class="fas fa-trash-alt"></i></a>  
+<div class="social-links">
+        <a href="{% url 'profile_edit' user_id=profile.user.id %}"><i class="fas fa-edit"></i></a> 
 </div>
 
 </div>
