@@ -34,6 +34,9 @@
     color: blue;
 }
 
+
+
+
 .img-responsive{
   height: 15vh;  
   margin: 20px;
@@ -42,9 +45,12 @@
   margin-right: auto;
 }
 
-
-.calender-landing{
-  text-align: center;
+.col-padding .limit{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100ch;;
+  
 }
 
 
