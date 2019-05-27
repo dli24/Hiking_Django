@@ -83,11 +83,18 @@ def profile_create(request):
     return render(request, 'accounts/profile_form.html', {'form': form})
 
 
+
+
 @login_required
 def profile(request, user_id):
-    user = request.user
     profile = Profile.objects.get(user=user_id)
-    return render(request, 'accounts/profile.html', {'profile': profile})
+    if request.user.is_authenticated:
+        user = request.user
+        hikes = Hike.objects.filter(profile=profile.pk)
+        comments = Comments.objects.filter(profile=profile.pk)
+        hike_group = HikeGroup.objects.filter(profile=profile.pk)
+    return render(request, 'accounts/profile.html', {'profile': profile,'hikes':hikes, 'comments': comments, 'user': user, })
+
 
 @login_required
 def profile_edit(request, user_id):

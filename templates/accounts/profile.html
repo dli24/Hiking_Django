@@ -9,37 +9,40 @@
 
 
 
-<h1>Profile</h1>	
+<h1>Profile</h1>        
 <div class="card">
 <img src="{{ profile.picture }}" alt="User Profile" />
 <h1>{{ profile.user.username }}</h1>
 
 <p class="title">{{ profile.bio }}</p>
 
-        <!-- how to get data to create hikes -->
-                <!--  get all infromation  or name that was create hike or Add hike -->
         <h4>Created Hikes ...</h4>
-        <ul>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-</ul>
 
-        <!-- join hikes -->
-        <h4>SignedUp Hikes ...</h4>
+
         <ul>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-</ul>
+        {% for hike in hikes%} 
+        <li><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ profile.hike }}</a></li>
+        {% endfor %}
+        </ul>
+
+
 
         <!-- ? -->
+        <h4>SignedUp Hikes ...</h4>
+        <ul>
+        {% for hike_group in hike_groups %} 
+        <li><a href="{% url 'hike_new' pk=hike.pk %}">{{ profile.hike_group }}</a></li>
+        {% endfor %}
+        </ul>
+        
+
+        
         <h4>Review Hikes ...</h4>
         <ul>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-</ul>
+        {% for comment in comments%} 
+        <li><a href="{% url 'comment_new' pk=hike.pk %}">{{ profile.comment }}</a></li>
+        {% endfor %}
+        </ul>
 <div class="social-links">
         <a href="{% url 'profile_edit' user_id=profile.user.id %}"><i class="fas fa-edit"></i></a> 
 </div>
