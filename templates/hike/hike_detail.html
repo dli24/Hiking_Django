@@ -3,24 +3,7 @@
 {% load static %}
 {% block titleContent %}{{ hike.title }}{% endblock %}
 {% block cssLink %}<link rel="stylesheet" href="{% static 'hike_detail.css' %}" />{% endblock %}
-{% block scripts %}
-<script src="{% static 'script/hike_detail.js' %}"></script>
-<script>
-function initMap() {
-    // The location of Uluru
-	var uluru = {lat: {{ hike.latitude}}, lng: {{hike.longitude}}};
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-		document.getElementById('map'), {zoom: 15, center: uluru});
-		console.log(map)
-		console.log()
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({position: uluru, map: map});
-}
-</script>
-<!-- https://maps.googleapis.com/maps/api/geocode/xml?address={{ hike.street }},+CA&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"></script>
-{% endblock %}
+
 {% block content %}
 
 
@@ -30,20 +13,24 @@ function initMap() {
 <div class="main">
 
 	<h1>{{ hike.title }}</h1>
-
 	
 	<img src="{{ hike.picture }}" alt="hike-photo" >
 	
 	<p>{{ hike.description }}</p>
 </div>
+<h4> Add Comment || Join Hike ||</h4>
 <div>
-	<h3><a href="{% url 'comment_new' pk=hike.pk %}">Comment</a></h3>
+	<h3><a href="{% url 'comment_new' pk=hike.pk %}">(+) Add Comment</a></h3>
 	<ul>
 		{% for comment in comments %}
-		<div class="comments">
-			<p><span class="username">{{ user.username }}:</span> {{ comment.body }}</p>
-			<p><span class="rating">Ratings:</span> {{ comment.rating }}</p>
-		</div>
+		<li>
+				<h4>Comment Added</h4>
+				{{ comment.body }}
+				
+				<h4>Hike rating</h4>
+				{{ comment.rating }}
+			
+		</li>
 		{% endfor %}
 	</ul>
 	
@@ -55,12 +42,12 @@ function initMap() {
 
 </div>
 
-<h3><a href="#">(+) Edit Hike</a></h3>
+<h3><a href="{% url 'hike_edit' pk=hike.pk %}">(+) Edit Hike</a></h3>
 
 	
 	
 	<!-- Google  Map -->
-				<h3 class="location">Locations</h3>
+				<h3>Google Maps </h3>
 	<!--The div element for the map -->
 	<div id="map"></div>
 
