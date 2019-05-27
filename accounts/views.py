@@ -11,6 +11,13 @@ from .forms import ProfileForm
 
 from .models import Profile
 
+from accounts.models import Profile
+
+from hike.models import Hike, Comments, HikeGroup
+
+
+
+
 # Create your views here.
 
 
