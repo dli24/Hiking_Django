@@ -91,12 +91,18 @@ def comment_detail(request, hike_id):
     return render(request, 'hike/hike_detail.html', {'hike':hike})
 
 
+@login_required
+def hike_join(request, pk):
+   hike = Hike.objects.get(pk=pk)
+   user = request.user
+   profile = Profile.objects.get(user=user.pk)
+   HikeGroup.profile = profile
+   HikeGroup.hike = hike
+   #HikeGroup.save()
+   print(HikeGroup.hike,  "HikeGroup.hike")
+   print(HikeGroup.profile, "HikeGroup.profile")
+
+   return render(request, 'hike/hike_detail.html', {'hike': hike, 'user':user, 'HikeGroup':HikeGroup})
+  
 # @login_required
-# def hike_join(request, pk):
-#   hike = Hike.objects.get(pk=pk)
-#   user = request.user
-#   profile = Profile.objects.get(user=user.pk)
-#   hike_group.hike = hike
-#   hike_group.profile = profile
-#   hike_group.save()
-#   return render(request, 'hike/hike_detail.html', {'user':user})
+# def hike_unjoin(request, pk):
