@@ -38,7 +38,10 @@
 	
 </div>
 <div>
-		<h3><a href="#">(+) Join Hike</a></h3>
+		<h3><a href="{% url 'hike_join' pk=hike.pk %}">(+) Join Hike</a></h3>
+		<h3>{{ HikeGroup.hike }}</h3>
+		<h3>{{ HikeGroup.profile }}</h3>
+
 </div>
 
 	

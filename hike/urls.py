@@ -17,6 +17,8 @@ urlpatterns = [
   path('hike/calendar', views.hike_calendar, name='hike_calendar'),
 
   # add a comment to a hike
-  path('hike/comment/<int:pk>', views.comment_new, name='comment_new')
+  path('hike/comment/<int:pk>', views.comment_new, name='comment_new'),
 
+  # add user to hike
+  path('hike/join/<int:pk>', views.hike_join, name='hike_join'),
 ]
