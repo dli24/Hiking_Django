@@ -52,6 +52,30 @@ def hike_new(request):
       form = HikeForm()
   return render(request, 'hike/hike_form.html', {'form': form, 'profile': profile})
 
+# @login_required
+# def hike_edit(request, pk):
+#   #hike = Hike.objects.get(pk=pk)
+#   hike = get_object_or_404(Hike, pk=pk)
+#   user = request.user
+#   profile = Profile.objects.get(user=user.pk)
+
+#   print(hike.title,  "==================HIKE TITLE==================")
+#   print(hike.description, "==================HIKE.DESCRIPTION==================")
+#   print(user, "=========THIS USER==========")
+#   print(hike.profile, "==========THIS IS HIKE PROFILE==========")
+
+#   if request.method == "POST":
+#     form = HikeForm(request.POST, instance=hike)
+#     hike = request.hike.copy()
+#     if form.is_valid():
+#       hike = form.save(commit=False)
+#       hike.profile = profile
+#       hike.save()
+#       return redirect('hike_detail', hike_id=hike.pk)
+#   else:
+#     form = HikeForm(instance=hike)
+#   return render(request, 'hike/hike_form.html', {'form': form, 'profile': profile})
+
 
 # show all hikes on a calendar
 def hike_calendar(request):
