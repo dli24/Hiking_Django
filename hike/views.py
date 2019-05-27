@@ -27,7 +27,7 @@ def hike_detail(request, hike_id):
   hike = Hike.objects.get(id=hike_id)
   if request.user.is_authenticated:
     user = request.user
-    profile = Profile.objects.get(id=user.pk)
+    profile = Profile.objects.get(user=user.pk)
     comments = Comments.objects.filter(hike=hike_id)
     hike_group = HikeGroup.objects.filter(hike=hike_id)
     return render(request, 'hike/hike_detail.html', {'profile': profile,'hike':hike, 'comments': comments, 'user': user})
@@ -39,18 +39,18 @@ def hike_detail(request, hike_id):
 
 @login_required
 def hike_new(request):
+  user = request.user
+  profile = Profile.objects.get(user=user.pk)
   if request.method == 'POST':
     form = HikeForm(request.POST)
     if form.is_valid():
       hike = form.save(commit=False)
-      user = request.user
-      profile = Profile.objects.get(user=user.pk)
       hike.profile = profile
       hike.save()
       return redirect('hike_detail', hike_id=hike.pk)
   else:
       form = HikeForm()
-  return render(request, 'hike/hike_form.html', {'form': form})
+  return render(request, 'hike/hike_form.html', {'form': form, 'profile': profile})
 
 
 # show all hikes on a calendar
@@ -58,7 +58,7 @@ def hike_calendar(request):
     hikes = Hike.objects.order_by('hike_date')
     if request.user.is_authenticated:
         user = request.user
-        profile = Profile.objects.get(id=user.pk)
+        profile = Profile.objects.get(user=user.pk)
         return render(request, 'hike/hike_calendar.html', {'profile': profile, 'hikes': hikes})
     else:
         return render(request, 'hike/hike_calendar.html', {'hikes': hikes})
@@ -67,26 +67,26 @@ def hike_calendar(request):
 @login_required
 def comment_new(request, pk):
     hike = Hike.objects.get(pk=pk)
+    user = request.user
+    profile = Profile.objects.get(user=user.pk)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
           comment = form.save(commit=False)
-          user = request.user
-          profile = Profile.objects.get(user=user.pk)
           comment.profile = profile
           comment.hike = hike
           comment.save()
           return redirect('hike_detail', hike_id=pk)
     else:
         form = CommentForm()
-    return render(request, 'hike/comment_form.html', {'form': form, 'hike': hike})
+    return render(request, 'hike/comment_form.html', {'form': form, 'hike': hike, 'profile': profile})
 
 def comment_detail(request, hike_id):
   comment = Comments.objects.get(id=hike_id)
   if request.user.is_authenticated:
     user = request.user
     profile = Profile.objects.get(id=user.pk)
-    return render(request, 'hike/hike_detail.html', {'hike': hike,'comment':comment})
+    return render(request, 'hike/hike_detail.html', {'hike': hike,'comment':comment, 'profile': profile})
   else:
     return render(request, 'hike/hike_detail.html', {'hike':hike})
 
@@ -106,8 +106,3 @@ def hike_join(request, pk):
   
 # @login_required
 # def hike_unjoin(request, pk):
-  
-
-
-
-
