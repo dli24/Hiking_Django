@@ -1,48 +1,49 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% block titleContent %}Add or Update your hike{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'hikeform.css' %}" />
+{% endblock %}
+
 {% block content %}
-<h1>Added Hike</h1>
-<div class="hikeform">
+
 	<form method="POST">
 		{% csrf_token %}
 		<!-- {{ form.as_p }} -->
-		<div>
-			<label for="title">Title: </label>
-			<input class="title"
-					type="text"
-					name="title"
-					required />
-		</div>
-		<div>
-			<label for="description">Description: </label>
-			<input class="description"
-					type="text"
-					name="description"
-					required />
-		</div>
-		<div>
-			<label for="street">Street: </label>
-			<input class="street"
-					type="text"
-					name="street"
-					required	/>
-		</div>
-		<div>
-			<label for="city">City: </label>
-			<input class="city"
-					type="text"
-					name="city"
-					required />
-		</div>
-		<div>
-			<label for="zipcode">Zip Code: </label>
-			<input class="zipcode"
-					type="number"
-					name="zipcode"
-					maxlength="30em"
-					required />
-		</div>
-		<button type="submit" class="save btn btn-default">Save</button>
+		<div class="container">
+				<h1>Add A New Hike</h1>
+				<div class="hikeForm">
+				<label for="title">Title: </label>
+				<input class="title" type="text" name="title" required />
+
+				<label for="description">Description: </label>
+				<input class="description" type="text" name="description" style="height:160px" required />
+
+				<label for="street">Street: </label>
+				<input class="street" type="text" name="street" required	/>
+
+				<label for="city">City: </label>
+				<input class="city" type="text" name="city" required />
+
+				<label for="zipcode">Zip Code: </label>
+				<input class="zipcode" type="number" name="zipcode" required />
+
+				<label for="picture">Picture </label>
+				<input class="picture" type="text" name="picture" required />
+
+				<label for="hike_date">Hike Date: </label>
+				<input class="hike_date" type="date" name="hike_date" required />
+
+				<label for="distance">Distance: </label>
+				<input class="distance" type="number" name="distance" required />
+
+				<label for="difficulty">Difficulty: </label>
+				<input class="difficulty" type="number" name="difficulty" required />
+
+			</div>
+				<p>By adding a hike you agree to our <b>Terms & Conditions</b></p>
+		
+				<button type="submit" class="hikeButton">Save</button>
+			</div>
+						
 	</form>
-</div>
 {% endblock %}
