@@ -1,42 +1,56 @@
-.hikeform form label {
-    margin-left:30%;
-}   
-
-.hikeform form .title {
-    margin-left: 3em;
-    width: 23em;
-}
-.hikeform form .description {
-    margin-left: .15em;
-    width: 26em;
-    height: 30em;
-}
-.hikeform form .street{
-    margin-top: 1em;
-    margin-left: 2.5em;
-    padding-right: 15em;
-}
-.hikeform form .city{
-    margin-left: 3.5em;
-    padding-right: 15em;
-}
-.hikeform form .zipcode{
-    margin-left: 1.2em;
-    padding-right: 15em;
+* {
+  box-sizing: border-box;
 }
 
-.hikeform form .save {
-    margin-top: 10px;
-    margin-left: 45%;
-    width: 15em;
-    border: 1px solid grey;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
 }
-.hikeform form .save:hover{
-    background-color: #4169e1;
-    color: white;
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=number], input[type=date] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, input[type=date]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+label {
+  font-weight: 600;
+  padding-left: 5px;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.hikeForm {
+  border: 1px solid #0c0c0c;
+  padding: 25px;
+  margin: 5px 0 22px 0;
+}
+/* Set a style for the submit button */
+.hikeButton {
+  background-color: #4169e1;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
 }

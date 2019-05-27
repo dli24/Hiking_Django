@@ -5,96 +5,45 @@
 {% endblock %}
 
 {% block content %}
-<h1>Add A New Hike</h1>
-<div class="hikeform">
+
 	<form method="POST">
 		{% csrf_token %}
 		<!-- {{ form.as_p }} -->
-		<div>
-			<label for="title">Title: </label>
-			<input class="title"
-					type="text"
-					name="title"
-					required />
-		</div>
-		<div>
-			<label for="description">Description: </label>
-			<input class="description"
-					type="text"
-					name="description"
-					required />
-		</div>
-		<div>
-			<label for="street">Street: </label>
-			<input class="street"
-					type="text"
-					name="street"
-					required	/>
-		</div>
-		<div>
-			<label for="city">City: </label>
-			<input class="city"
-					type="text"
-					name="city"
-					required />
-		</div>
-		<div>
-			<label for="zipcode">Zip Code: </label>
-			<input class="zipcode"
-					type="number"
-					name="zipcode"
-					maxlength="30em"
-					required />
-		</div>
-		<div>
-			<label for="picture">Picture </label>
-			<input class="picture"
-				type="text"
-				name="picture"
-				maxlength="30em"
-				required />
-		</div>
-		<div>
+		<div class="container">
+				<h1>Add A New Hike</h1>
+				<div class="hikeForm">
+				<label for="title">Title: </label>
+				<input class="title" type="text" name="title" required />
+
+				<label for="description">Description: </label>
+				<input class="description" type="text" name="description" style="height:160px" required />
+
+				<label for="street">Street: </label>
+				<input class="street" type="text" name="street" required	/>
+
+				<label for="city">City: </label>
+				<input class="city" type="text" name="city" required />
+
+				<label for="zipcode">Zip Code: </label>
+				<input class="zipcode" type="number" name="zipcode" required />
+
+				<label for="picture">Picture </label>
+				<input class="picture" type="text" name="picture" required />
+
 				<label for="hike_date">Hike Date: </label>
-				<input class="hike_date"
-					type="date"
-					name="hike_date"
-					maxlength="30em"
-					required />
+				<input class="hike_date" type="date" name="hike_date" required />
+
+				<label for="distance">Distance: </label>
+				<input class="distance" type="number" name="distance" required />
+
+				<label for="difficulty">Difficulty: </label>
+				<input class="difficulty" type="number" name="difficulty" required />
+
 			</div>
-			<div>
-					<label for="distance">Distance: </label>
-					<input class="distance"
-						type="number"
-						name="distance"
-						maxlength="30em"
-						required />
-				</div>
-				<div>
-						<label for="difficulty">Difficulty: </label>
-						<input class="difficulty"
-							type="number"
-							name="difficulty"
-							maxlength="30em"
-							required />
-					</div>
-		<button type="submit" class="save btn btn-default">Save</button>
+				<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+		
+				<button type="submit" class="hikeButton">Save</button>
+			</div>
+						
 	</form>
-</div>
 {% endblock %}
-
-
-profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='hike')
-    
-    
-    hike_date = models.DateField(null=True)
-    latitude = models.FloatField(null=True)
-    longitude = models.FloatField(null=True)
-    street = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
-    zipcode = models.IntegerField(null=True)
-    distance = models.FloatField(null=True)
-    difficulty = models.FloatField(null=True)
-    created_date = models.DateField(null=True)
-    picture = models.TextField(null=True)
