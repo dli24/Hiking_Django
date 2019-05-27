@@ -1,7 +1,11 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% block titleContent %}Add or Update your hike{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'hikeform.css' %}" />
+{% endblock %}
+
 {% block content %}
-<h1>Added Hike</h1>
+<h1>Add A New Hike</h1>
 <div class="hikeform">
 	<form method="POST">
 		{% csrf_token %}
@@ -42,7 +46,55 @@
 					maxlength="30em"
 					required />
 		</div>
+		<div>
+			<label for="picture">Picture </label>
+			<input class="picture"
+				type="text"
+				name="picture"
+				maxlength="30em"
+				required />
+		</div>
+		<div>
+				<label for="hike_date">Hike Date: </label>
+				<input class="hike_date"
+					type="date"
+					name="hike_date"
+					maxlength="30em"
+					required />
+			</div>
+			<div>
+					<label for="distance">Distance: </label>
+					<input class="distance"
+						type="number"
+						name="distance"
+						maxlength="30em"
+						required />
+				</div>
+				<div>
+						<label for="difficulty">Difficulty: </label>
+						<input class="difficulty"
+							type="number"
+							name="difficulty"
+							maxlength="30em"
+							required />
+					</div>
 		<button type="submit" class="save btn btn-default">Save</button>
 	</form>
 </div>
 {% endblock %}
+
+
+profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='hike')
+    
+    
+    hike_date = models.DateField(null=True)
+    latitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
+    street = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    zipcode = models.IntegerField(null=True)
+    distance = models.FloatField(null=True)
+    difficulty = models.FloatField(null=True)
+    created_date = models.DateField(null=True)
+    picture = models.TextField(null=True)
