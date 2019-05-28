@@ -118,3 +118,4 @@ def hike_join(request, pk):
    print(hikegroup.hike, "HikeGroup.hike")
    print(hikegroup.profile, "HikeGroup.profile")
    return redirect('hike_detail', hike_id=pk)
+

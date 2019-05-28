@@ -1,48 +1,51 @@
-.registerTitle{
-    margin-left: 40%;
-    font-size: 3em;
-    font-weight: bolder;
-}
-
-.registerForm form label{
-    margin-left: 30%;
-}
-.registerForm form .firstName{
-    margin-left: 60px;
-}
-
-.registerForm form .lastName{
-    margin-left: 61px;
-}
-
-.registerForm form .email{
-    margin-left: 100px;
-}
-
-.registerForm form .username{
-    margin-left: 64px;
-}
-
-.registerForm form .password{
-    margin-left: 69px;
-}
-
-.registerForm form .password2{
-    margin-left: 8px;
-}
-.registerForm form .submit{
-    margin-top: 1em;
-    margin-left: 42%;
-    height: 2.5em;
-    width: 10em;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
-}
-
-.registerForm form .submit:hover{
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  label {
+    font-weight: 600;
+    padding-left: 5px;
+  }
+  
+  .registerForm {
+    border: 1px solid #0c0c0c;
+    padding: 25px;
+    margin: 5px 0 22px 0;
+  }
+  /* Set a style for the submit button */
+  .registerButton {
     background-color: #4169e1;
     color: white;
-}
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .registerButton:hover {
+    opacity: 1;
+  }
+  

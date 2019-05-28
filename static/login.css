@@ -1,29 +1,51 @@
-.loginTitle {
-    margin-left: 43%;
-    font-size: 3em;
-    font-weight: bolder;
-}
-.loginForm form label{
-    margin-left: 33%;
-}
-.loginForm form .username {
-    margin-left: 10px;
-}
-.loginForm form .password {
-    margin-left: 14.5px;
-}
-.loginForm form .submit{
-    margin-top: 1em;
-    margin-left: 43%;
-    height: 2.5em;
-    width: 8em;
-    border-radius: 35px;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    -ms-border-radius: 35px;
-    -o-border-radius: 35px;
-}
-.loginForm form .submit:hover{
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  label {
+    font-weight: 600;
+    padding-left: 5px;
+  }
+  
+  .loginForm {
+    border: 1px solid #0c0c0c;
+    padding: 25px;
+    margin: 5px 0 22px 0;
+  }
+  /* Set a style for the submit button */
+  .loginButton {
     background-color: #4169e1;
     color: white;
-}
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .loginButton:hover {
+    opacity: 1;
+  }
+  

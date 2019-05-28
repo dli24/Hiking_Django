@@ -1,36 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block titleContent %}Login{% endblock %}
-{% block cssLink %}{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'login.css' %}" />{% endblock %}
 {% block content %}
-<h2 class="loginTitle">Login</h2>
+
 
 {% if error %}
-<p style="background-color: salmon; padding: 10px;">{{ error }}</p>
+	<p style="background-color: salmon; padding: 10px;">{{ error }}</p>
 {% endif %}
 
-<div class="loginForm">
-	<form action="{% url 'login' %}" method="POST">
-		{% csrf_token %}
+<form action="{% url 'login' %}" method="POST">
+	{% csrf_token %}
+	<!-- {{ form.as_p }} -->
+	<div class="container">
+		<h1 style="text-align: center">Sign In</h1>
+		<div class="loginForm">
 
-		<div>
-			<label for="username">Username</label>
+			<label for="username">User Name: </label>
 			<input class="username" type="text" name="username" required maxlength="25" minlength="2" />
-		</div>
 
-		<div>
-			<label for="password">Password</label>
-			<input
-				class="password"
-				type="password"
-				name="password"
-				required
-				maxlength="25"
-				minlength="4"
-			/>
-		</div>
+			<label for="password">Password: </label> 
+			<input class="password" type="password" name="password" required maxlength="25" minlength="4" />
 
-		<input class="submit" type="submit" value="Login" />
-	</form>
-</div>
+			<input type="submit" value="Login" class="loginButton" />
+		</div>
+	</div>
+
+</form>
 {% endblock %}
