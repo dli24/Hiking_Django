@@ -1,8 +1,27 @@
-{% extends 'base.html' %} {% block content %}
-<h1>Add Coment</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block titleContent %}{{ hike.title }}{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'comment.css' %}" />
+{% endblock %}
+{% block content %}
 <form method="POST">
 	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit">Save</button>
+	<!-- {{ form.as_p }} -->
+
+	<div class="container">
+		<h1>Add Comment</h1>
+		<div class="commentForm">
+
+			<label for="id_body">Body: </label>
+			<input class="body" type="text" name="body" required style="height:160px" />
+
+			<label for="id_rating">Rating: </label> 
+			<input type="number" name="rating" step="any" required />
+			<button type="submit" class="commentButton">Save</button>
+		</div>
+	</div>
+
 </form>
+
+
 {% endblock %}
