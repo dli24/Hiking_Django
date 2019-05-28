@@ -1,4 +1,7 @@
 {% extends 'base.html' %} {% block content %}
+{% load static %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'register.css' %}" />
+{% endblock %}
 <h2 class="registerTitle">Register</h2>
 
 {% if error %}
