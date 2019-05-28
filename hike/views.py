@@ -124,9 +124,12 @@ def hike_join(request, pk):
    profile = Profile.objects.get(user=user.pk)
   #  HikeGroup.hike.objects.save(hike=instance)
   #  HikeGroup.profile.objects.save(profile=instance)
-   HikeGroup.profile = profile
-   HikeGroup.hike = hike
+   #HikeGroup.profile = profile
+   #HikeGroup.hike = hike
    #hikegroup = HikeGroup.save()
-   print(HikeGroup.hike, "HikeGroup.hike")
-   print(HikeGroup.profile, "HikeGroup.profile")
-   return render(request, 'hike/hike_detail.html', {'hike': hike, 'user':user, 'HikeGroup':HikeGroup})
+   hikegroup = HikeGroup.objects.create(hike=hike, profile=profile)
+   hikegroup.save()
+   
+   print(hikegroup.hike, "HikeGroup.hike")
+   print(hikegroup.profile, "HikeGroup.profile")
+   return render(request, 'hike/hike_detail.html', {'hike': hike, 'user':user, 'hikegroup':hikegroup})
