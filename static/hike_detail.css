@@ -1,47 +1,57 @@
-* {
-  box-sizing: border-box;
-}
+
+
+/* Set the size of the div element that contains the map */
 #map {
-	height: 400px;  /* The height is 400 pixels */
-	width: 100%;  /* The width is the width of the web page */
-}
-    
-    
-/* main */
-
-.main{    
-	margin-top: 40px;
-}
-
-.main img{
-	height: 100vh;
-	margin: 20px;
-	display: block;
-	margin-left: auto;
-  margin-right: auto;
-}
-
-.main h1{
-	text-align: center;
-}
-
-.main p{
-	margin: 20px;
-}
-/* 
- a.local-link {
-  background-color: #4169e1;
-  padding: .15em .75em;
-  text-decoration: none;  
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  opacity: 0.9;
+  height: 400px;  /* The height is 400 pixels */
+  width: 100%;  /* The width is the width of the web page */
   }
   
-  a:hover.local-link{
-    opacity: 1;
+  
+  /* main */
+  
+  .main{
+  margin-top: 40px;
   }
-   */
+  
+  .main img{
+  height: 80vh;
+  width: 80vw;
+  margin: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+  
+  .main h1{
+  text-align: center;
+  width: 80vw;
+  margin-left: 12%
+  }
+  
+  .main p{
+  margin-left: 10%;
+  width: 80vw;
+  }
+  .comments{
+      background-color: lightgrey;
+      border: 2px solid grey;
+      width: 70%;
+      margin-bottom: 1em;
+  }
+  
+  .username{
+      font-size: 1.3em;
+      font-weight: bolder;
+      text-transform: uppercase;
+  }
+  .location{
+      margin-top: 1em;
+      text-align: center;
+      font-family: 'fantasy';
+      font-size: 3em;
+  }
+  #map{
+      height: 55vh; 
+      width: 55%;
+      margin-left: 23%;
+  }
