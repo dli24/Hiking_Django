@@ -6,10 +6,9 @@ from django.contrib.auth.decorators import login_required
 
 # IMPORT DJANGO USER MODEL
 from django.contrib.auth.models import User
-
 from .forms import ProfileForm
-
 from .models import Profile
+from hike.models import Hike, Comments, HikeGroup
 
 # Create your views here.
 
@@ -85,9 +84,14 @@ def profile_create(request):
 
 @login_required
 def profile(request, user_id):
-    user = request.user
     profile = Profile.objects.get(user=user_id)
-    return render(request, 'accounts/profile.html', {'profile': profile})
+    if request.user.is_authenticated:
+        user = request.user
+        hikes = Hike.objects.filter(profile=profile.pk)
+        comments = Comments.objects.filter(profile=profile.pk)
+        hike_groups = HikeGroup.objects.filter(profile=profile.pk)
+    return render(request, 'accounts/profile.html', {'profile': profile,'hikes':hikes, 'comments': comments, 'hike_groups': hike_groups, 'user': user})
+
 
 @login_required
 def profile_edit(request, user_id):

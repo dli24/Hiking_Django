@@ -52,30 +52,33 @@ def hike_new(request):
       form = HikeForm()
   return render(request, 'hike/hike_form.html', {'form': form, 'profile': profile})
 
-# @login_required
-# def hike_edit(request, pk):
-#   #hike = Hike.objects.get(pk=pk)
-#   hike = get_object_or_404(Hike, pk=pk)
-#   user = request.user
-#   profile = Profile.objects.get(user=user.pk)
+@login_required
+def hike_edit(request, pk):
+    hike = Hike.objects.get(pk=pk)
 
-#   print(hike.title,  "==================HIKE TITLE==================")
-#   print(hike.description, "==================HIKE.DESCRIPTION==================")
-#   print(user, "=========THIS USER==========")
-#   print(hike.profile, "==========THIS IS HIKE PROFILE==========")
+    # user = request.user
+    # profile = Profile.objects.get(user=user.pk)
 
-#   if request.method == "POST":
-#     form = HikeForm(request.POST, instance=hike)
-#     hike = request.hike.copy()
-#     if form.is_valid():
-#       hike = form.save(commit=False)
-#       hike.profile = profile
-#       hike.save()
-#       return redirect('hike_detail', hike_id=hike.pk)
-#   else:
-#     form = HikeForm(instance=hike)
-#   return render(request, 'hike/hike_form.html', {'form': form, 'profile': profile})
 
+    # print(hike.title,  "==================HIKE TITLE==================")
+    # print(hike.description, "==================HIKE.DESCRIPTION==================")
+    # print(user, "=========THIS USER==========")
+    # print(hike.profile, "==========THIS IS HIKE PROFILE==========")
+
+    if request.method == 'POST':
+        form = HikeForm(request.POST or None, instance=hike)
+        # print("++++++++++IF POST++++++++++")
+        if form.is_valid():
+            form.save()
+            # hike = form.save(commit=False)
+            # print("++++++++++IF VALID++++++++++")
+            # hike.save()
+            return redirect('hike_detail')
+    else:
+        form = HikeForm(instance=Hike)
+    print("++++++++++ELSE++++++++++")
+    print("++++++++++RETURN++++++++++")
+    return render(request, 'hike/hike_form.html', {'form': form, 'hike':hike})
 
 # show all hikes on a calendar
 def hike_calendar(request):
@@ -114,19 +117,19 @@ def comment_detail(request, hike_id):
   else:
     return render(request, 'hike/hike_detail.html', {'hike':hike})
 
-
 @login_required
 def hike_join(request, pk):
    hike = Hike.objects.get(pk=pk)
    user = request.user
    profile = Profile.objects.get(user=user.pk)
-   HikeGroup.profile = profile
-   HikeGroup.hike = hike
-   #HikeGroup.save()
-   print(HikeGroup.hike,  "HikeGroup.hike")
-   print(HikeGroup.profile, "HikeGroup.profile")
-
-   return render(request, 'hike/hike_detail.html', {'hike': hike, 'user':user, 'HikeGroup':HikeGroup})
-  
-# @login_required
-# def hike_unjoin(request, pk):
+  #  HikeGroup.hike.objects.save(hike=instance)
+  #  HikeGroup.profile.objects.save(profile=instance)
+   #HikeGroup.profile = profile
+   #HikeGroup.hike = hike
+   #hikegroup = HikeGroup.save()
+   hikegroup = HikeGroup.objects.create(hike=hike, profile=profile)
+   hikegroup.save()
+   
+   print(hikegroup.hike, "HikeGroup.hike")
+   print(hikegroup.profile, "HikeGroup.profile")
+   return render(request, 'hike/hike_detail.html', {'hike': hike, 'user':user, 'hikegroup':hikegroup})

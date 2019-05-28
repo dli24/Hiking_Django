@@ -1,4 +1,4 @@
-{% extends 'base.html'%} 
+{% extends 'base.html'%}
 {% load static %}
 {% block titleContent %}Profile of {{ profile.user.username }}{% endblock %}
 {% block cssLink %}<link rel="stylesheet" href="{% static 'profile.css' %}" />{% endblock %}
@@ -9,39 +9,52 @@
 
 
 
-<h1>Profile</h1>	
+<h1>Profile</h1>
 <div class="card">
 <img src="{{ profile.picture }}" alt="User Profile" />
 <h1>{{ profile.user.username }}</h1>
 
 <p class="title">{{ profile.bio }}</p>
 
-        <!-- how to get data to create hikes -->
-                <!--  get all infromation  or name that was create hike or Add hike -->
+
         <h4>Created Hikes ...</h4>
+        {% for hike in hikes%}
         <ul>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-</ul>
+        <li><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ hike.title }}</a></li>
+        </ul>
+        {% endfor %}
 
-        <!-- join hikes -->
+
         <h4>SignedUp Hikes ...</h4>
+        {% for hike in hike_groups %} 
         <ul>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-</ul>
+        <li><a href="#">{{ hike.hike.title }}</a></li>
+        </ul>
+        {% endfor %}
 
-        <!-- ? -->
-        <h4>Review Hikes ...</h4>
+
+
+        <!--Error  =>  {{hike.hike.id}} for the signed up hikes ids for the href   -->
+        <!-- <h4>SignedUp Hikes ...</h4>
+        {% for hike in hike_groups %} 
         <ul>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-</ul>
+        <li><a href="{{hike.hike.id}}">{{ hike.hike.title }}</a></li>
+        </ul>
+        {% endfor %} -->
+
+
+
+
+        <h4>Review Hikes ...</h4>
+        {% for comment in comments%} 
+        <ul>
+        <li>{{ comment.body }}</li>
+        </ul>
+        {% endfor %}
+
+
 <div class="social-links">
-        <a href="{% url 'profile_edit' user_id=profile.user.id %}"><i class="fas fa-edit"></i></a> 
+        <a href="{% url 'profile_edit' user_id=profile.user.id %}"><i class="fas fa-edit"></i></a>
 </div>
 
 </div>
