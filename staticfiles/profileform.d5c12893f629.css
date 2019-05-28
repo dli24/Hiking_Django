@@ -9,7 +9,7 @@
   }
   
   /* Full-width input fields */
-  input[type=text], input[type=password], input[type=email] {
+  input[type=text] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -18,7 +18,7 @@
     background: #f1f1f1;
   }
   
-  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+  input[type=text]:focus {
     background-color: #ddd;
     outline: none;
   }
@@ -28,13 +28,13 @@
     padding-left: 5px;
   }
   
-  .registerForm {
+  .profileForm {
     border: 1px solid #0c0c0c;
     padding: 25px;
     margin: 5px 0 22px 0;
   }
   /* Set a style for the submit button */
-  .registerButton {
+  .profileButton {
     background-color: #4169e1;
     color: white;
     padding: 16px 20px;
@@ -45,7 +45,7 @@
     opacity: 0.9;
   }
   
-  .registerButton:hover {
+  .profileButton:hover {
     opacity: 1;
   }
   

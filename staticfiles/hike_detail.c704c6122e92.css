@@ -1,0 +1,45 @@
+
+  /* main */
+
+  .main{
+  margin-top: 40px;
+  }
+
+  .main img{
+    height: 70vh;
+    margin: 20px auto;
+    display: block;
+  }
+  h1{
+  text-align: center;
+  }
+
+  .main p, .comments, .joinUs {
+    margin: 20px 120px;
+  }
+  li {
+    list-style: none;
+  }
+  .comment {
+      background-color: #eee;
+      border: 1px solid #92d1f3;
+      width: 70%;
+      margin-bottom: 1em;
+      padding: 12px;
+  }
+
+  .username{
+      font-size: 1.3em;
+      font-weight: bolder;
+      text-transform: uppercase;
+  }
+  .location{
+      margin-top: 1em;
+      text-align: center;
+      font-size: 3em;
+  }
+  #map{
+      height: 55vh;
+      width: 55%;
+      margin: 30px auto 20px;
+  }

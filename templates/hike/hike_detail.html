@@ -23,10 +23,13 @@ function initMap() {
 
 <div class="main">
 	<img src="{{ hike.picture }}" alt="hike-photo" >
+
 	<h1>{{ hike.title }}</h1>
+	<p style="text-align: center"><b>Distance:</b> {{ hike.distance }} - <b>Difficulty:</b> {{ hike.difficulty }}</p>
 
 	<p>{{ hike.description }}</p>
 </div>
+
 <div class="comments">
 	<h4>Comments:</a></h4>
 	<ul>
@@ -36,7 +39,7 @@ function initMap() {
 		</li>
 		{% endfor %}
 	</ul>
-	<a href="{% url 'comment_new' pk=hike.pk %}">Add a comment</a>
+	<a href="{% url 'comment_new' pk=hike.pk %}">(+) Comment</a>
 
 </div>
 <div class="joinUs">
@@ -45,12 +48,16 @@ function initMap() {
 			{{hiker.profile.user.username}} *
 		{% endfor %}<br/>
 		<a href="{% url 'hike_join' pk=hike.pk %}">(+) Join this hike</a>
+
 </div>
 
 
 
 	<!-- Google  Map -->
 	<!--The div element for the map -->
+	<div>
+		<p style="text-align: center"><b>Address: </b>{{ hike.street }} - {{ hike.city }} - {{ hike.zipcode }}</p>
+	</div>
 	<div id="map"></div>
 
 
