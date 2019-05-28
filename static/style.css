@@ -198,13 +198,17 @@ html,body{
   font-weight: 700;
 }
 
+li a {
+  font-weight: 700;
+}
+
 a {
   text-decoration: none;
   color: #6c6af6;
 }
 
 a:link {
-    color: blue;
+    color: #6c6af6;
     }
 
     /* visited link */
