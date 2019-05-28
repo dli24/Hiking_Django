@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 {% load static %}
-{% block titleContent %}Register{% endblock %}
-{% block cssLink %}<link rel="stylesheet" href="{% static 'register.css' %}" />{% endblock %}
-{% block content %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'register.css' %}" />
+{% endblock %}
+<h2 class="registerTitle">Register</h2>
+
 {% if error %}
 <p style="background-color: salmon; padding: 10px;">{{ error }}</p>
 {% endif %}

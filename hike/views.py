@@ -119,3 +119,10 @@ def hike_join(request, pk):
    print(hikegroup.profile, "HikeGroup.profile")
    return redirect('hike_detail', hike_id=pk)
 
+def about(request):
+    if request.user.is_authenticated:
+        user = request.user
+        profile = Profile.objects.get(user=user.pk)
+        return render(request, 'about.html', {'profile': profile})
+    else:
+        return render(request, 'about.html')
