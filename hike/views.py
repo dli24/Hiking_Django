@@ -25,14 +25,14 @@ def landing(request):
 # Missing functionality - selected hike with map)
 def hike_detail(request, hike_id):
   hike = Hike.objects.get(id=hike_id)
+  comments = Comments.objects.filter(hike=hike_id)
+  hike_group = HikeGroup.objects.select_related('profile__user').filter(hike=hike_id)
   if request.user.is_authenticated:
     user = request.user
     profile = Profile.objects.get(user=user.pk)
-    comments = Comments.objects.filter(hike=hike_id)
-    hike_group = HikeGroup.objects.filter(hike=hike_id)
-    return render(request, 'hike/hike_detail.html', {'profile': profile,'hike':hike, 'comments': comments, 'user': user})
+    return render(request, 'hike/hike_detail.html', {'profile': profile,'hike':hike, 'comments': comments, 'user': user, 'hike_group': hike_group})
   else:
-    return render(request, 'hike/hike_detail.html', {'hike':hike})
+    return render(request, 'hike/hike_detail.html', {'hike':hike, 'hike_group': hike_group, 'comments': comments})
 
 #add a new hike
 # create a form to add a new hike
@@ -55,16 +55,6 @@ def hike_new(request):
 @login_required
 def hike_edit(request, pk):
     hike = Hike.objects.get(pk=pk)
-
-    # user = request.user
-    # profile = Profile.objects.get(user=user.pk)
-
-
-    # print(hike.title,  "==================HIKE TITLE==================")
-    # print(hike.description, "==================HIKE.DESCRIPTION==================")
-    # print(user, "=========THIS USER==========")
-    # print(hike.profile, "==========THIS IS HIKE PROFILE==========")
-
     if request.method == 'POST':
         form = HikeForm(request.POST or None, instance=hike)
         # print("++++++++++IF POST++++++++++")
@@ -122,14 +112,9 @@ def hike_join(request, pk):
    hike = Hike.objects.get(pk=pk)
    user = request.user
    profile = Profile.objects.get(user=user.pk)
-  #  HikeGroup.hike.objects.save(hike=instance)
-  #  HikeGroup.profile.objects.save(profile=instance)
-   #HikeGroup.profile = profile
-   #HikeGroup.hike = hike
-   #hikegroup = HikeGroup.save()
    hikegroup = HikeGroup.objects.create(hike=hike, profile=profile)
    hikegroup.save()
-   
+
    print(hikegroup.hike, "HikeGroup.hike")
    print(hikegroup.profile, "HikeGroup.profile")
-   return render(request, 'hike/hike_detail.html', {'hike': hike, 'user':user, 'hikegroup':hikegroup})
+   return redirect('hike_detail', hike_id=pk)
