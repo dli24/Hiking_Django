@@ -1,33 +1,51 @@
-.profileEdit h3{
-    margin-left: 35%;
-    font-size: 3em;
-    font-weight: bolder;
-}
-.profileEdit form label{
-    margin-left: 30%;
-}
-.profileEdit form .bio{
-    margin-left: 30%;
-    padding-bottom: 8em;
-    padding-right: 21em;
-}
-.profileEdit form .picture {
-    margin-left: 30%;
-    padding-bottom: 8em;
-    padding-right: 21em;
-}
-.profileEdit .save{
-    margin-top: 10px;
-    margin-left: 45%;
-    width: 15em;
-    border: 1px solid grey;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
-}
-.profileEdit .save:hover{
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  input[type=text] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  label {
+    font-weight: 600;
+    padding-left: 5px;
+  }
+  
+  .profileForm {
+    border: 1px solid #0c0c0c;
+    padding: 25px;
+    margin: 5px 0 22px 0;
+  }
+  /* Set a style for the submit button */
+  .profileButton {
     background-color: #4169e1;
     color: white;
-}
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .profileButton:hover {
+    opacity: 1;
+  }
+  
