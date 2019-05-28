@@ -1,9 +1,26 @@
-{% extends 'base.html' %} {% block content%}
+{% extends 'base.html' %}
+{% load static %}
+{% block titleContent %}{{ hike.title }}{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'profileForm.css' %}" />
+{% endblock %}
+{% block content %}
 
 <form method="POST">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit" class="save btn btn-default">Save</button>
-</form>
-
+		{% csrf_token %}
+		<!-- {{ form.as_p }} -->
+	
+		<div class="container">
+			<h1>Create Your Profile</h1>
+			<div class="profileForm">
+	
+				<label for="bio">Please add your Bio: </label>
+				<input class="bio" type="text" name="bio" required style="height:160px" />
+	
+				<label for="picture">Please input your Profile Picture in URL format </label> 
+				<input class="picture" type="text" name="picture" required />
+				<button type="submit" class="profileButton">Save</button>
+			</div>
+		</div>
+	
+	</form>
 {% endblock %}

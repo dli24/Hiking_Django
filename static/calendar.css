@@ -1,12 +1,25 @@
+.btn-group, .btn-default {
+  font-size: 1.5rem;
+}
+
+.table thead th {
+  border-top: 3px solid #92d1f3;
+  border-bottom: 3px solid #92d1f3;
+}
+
+.table td {
+  border-top: 2px solid #92d1f3;
+}
 .calendar-day {
   width: 100px;
   min-width: 100px;
   max-width: 100px;
-  height: 80px;
+  height: 100px;
 }
 .calendar-table {
-  margin: 0 auto;
-  width: 700px;
+  margin: 40px auto;
+  min-width: 700px;
+  width: 70%;
 }
 .selected {
   background-color: #eee;

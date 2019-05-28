@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block titleContent %}Calendar{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'calendar.css' %}" />{% endblock %}
+
+{% block content %}
 <!-- link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" -->
 <script>
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -53,28 +58,28 @@
     renderEvents();
   }
 
-  const hikes = [
-    {% for hike in hikes %}
+  const hikes = [{% for hike in hikes %}
     {
-      hike_date: new Date('{{hike.hike_date}}'),
+      hike_date: '{{hike.hike_date}}',
       hike_id: '{{hike.id}}',
       title: '{{hike.title}}',
       description: '{{hike.description}}',
-      distance: '{{distance}}',
-      difficulty: '{{difficulty}}'
+      distance: '{{hike.distance}}',
+      difficulty: '{{hike.difficulty}}'
     },
-
-    {% endfor %}
-  ]
+    {% endfor %}]
 
 
   const renderEvents = () => {
     hikes.forEach(hike => {
-      let eventEl = document.createElement('div');
-      eventEl.classList.add('event', 'begin', 'end');
-      eventEl.setAttribute('title', hike.title);
-      eventEl.innerHTML = `<a href="/hike/${hike.hike_id}">${hike.title}</a>`;
-      document.getElementById(dateToIdStr(hike.hike_date)).append(eventEl);
+      let dayEl = document.getElementById(dateToIdStr(new Date(hike.hike_date)));
+      if (dayEl) {
+        let eventEl = document.createElement('div');
+        eventEl.classList.add('event', 'begin', 'end');
+        eventEl.setAttribute('title', hike.title);
+        eventEl.innerHTML = `<a href="/hike/${hike.hike_id}">${hike.title}</a>`;
+        dayEl.append(eventEl);
+      }
     })
   }
 
@@ -84,7 +89,7 @@
     <table class="calendar-table table table-condensed table-tight">
       <thead>
         <tr>
-          <td colspan="7" style="text-align: center">
+          <td colspan="7" style="text-align: center; border-width:0">
             <table style="white-space: nowrap; width: 100%">
               <tr>
                 <td class="cal-nav" style="text-align: left;">
@@ -95,7 +100,7 @@
                   <button class="js-cal-option btn btn-default">Today</button>
                 </td>
                 <td>
-                  <span class="btn-group btn-group-lg" id="moYr">
+                  <span class="btn-group btn btn-group-lg" id="moYr">
                   </span>
                 </td>
               </tr>

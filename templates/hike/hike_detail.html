@@ -1,22 +1,55 @@
-{% extends 'base.html' %} {% block content %}
 
-
-	<!-- main -->
+{% extends 'base.html' %}
+{% load static %}
+{% block titleContent %}{{ hike.title }}{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'hike_detail.css' %}" />{% endblock %}
+{% block scripts %}
+<script>
+function initMap() {
+    // The location of Uluru
+	var uluru = {lat: {{ hike.latitude}}, lng: {{hike.longitude}}};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+		document.getElementById('map'), {zoom: 15, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+}
+</script>
+<!-- https://maps.googleapis.com/maps/api/geocode/xml?address={{ hike.street }},+CA&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"></script>
+{% endblock %}
+{% block content %}
 
 
 <div class="main">
-
+	<img src="{{ hike.picture }}" alt="hike-photo" >
 	<h1>{{ hike.title }}</h1>
-	
-	<img src="{{ hike.picture }}}" alt="hike-photo" >
-	
+
 	<p>{{ hike.description }}</p>
 </div>
-	
-	
-	
+<div class="comments">
+	<h4>Comments:</a></h4>
+	<ul>
+		{% for comment in comments %}
+		<li class="comment">
+			<span class="username">{{ user.username }}:</span> {{ comment.body }}
+		</li>
+		{% endfor %}
+	</ul>
+	<a href="{% url 'comment_new' pk=hike.pk %}">Add a comment</a>
+
+</div>
+<div class="joinUs">
+		<h4>Who's going:</h4>
+		* {% for hiker in hike_group %}
+			{{hiker.profile.user.username}} *
+		{% endfor %}<br/>
+		<a href="{% url 'hike_join' pk=hike.pk %}">(+) Join this hike</a>
+</div>
+
+
+
 	<!-- Google  Map -->
-				<h3>Google Maps </h3>
 	<!--The div element for the map -->
 	<div id="map"></div>
 

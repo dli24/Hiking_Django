@@ -1,8 +1,56 @@
-{% extends 'base.html' %} {% block content %}
-<h1>Added Hike</h1>
-<form method="POST">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit" class="save btn btn-default">Save</button>
-</form>
+{% extends 'base.html' %} 
+{% load static %}
+{% block titleContent %}Add or Update your hike{% endblock %}
+{% block cssLink %}<link rel="stylesheet" href="{% static 'hikeform.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+	<form method="POST">
+		{% csrf_token %}
+		<!-- {{ form.as_p }} -->
+		<div class="container">
+				<h1>Add A New Hike</h1>
+				<div class="hikeForm">
+				<label for="title">Title: </label>
+				<input class="title" type="text" name="title" required value="{{hike.title}}" />
+
+				<label for="description">Description: </label>
+				<input class="description" type="text" name="description" style="height:160px" required value="{{hike.description}}" />
+
+				<label for="street">Street: </label>
+				<input class="street" type="text" name="street" required value="{{hike.street}}" />
+
+				<label for="city">City: </label>
+				<input class="city" type="text" name="city" required value="{{hike.city}}" />
+
+				<label for="zipcode">Zip Code: </label>
+				<input class="zipcode" type="number" name="zipcode" required value="{{hike.zipcode}}" />
+
+				<label for="picture">Picture </label>
+				<input class="picture" type="text" name="picture" required value="{{hike.picture}}" />
+
+				<label for="hike_date">Hike Date: </label>
+				<input class="hike_date" type="date" name="hike_date" required value="{{hike.hike_date}}" />
+
+				<label for="distance">Distance: </label>
+				<input class="distance" type="number" name="distance" required value="{{hike.distance}}" />
+
+				<label for="difficulty">Difficulty: </label>
+				<input class="difficulty" type="number" name="difficulty" required value="{{hike.difficulty}}" />
+
+				<label for="longitude">Longitude: </label>
+				<input class="longitude" type="number" name="longitude" />
+
+				<label for="latitude">Latitude: </label>
+				<input class="latitude" type="number" name="latitude" />
+
+
+			</div>
+				<p>By adding a hike you agree to our <b>Terms & Conditions</b></p>
+		
+				<button type="submit" class="hikeButton">Save</button>
+			</div>
+						
+	</form>
 {% endblock %}

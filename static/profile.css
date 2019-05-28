@@ -3,6 +3,7 @@
     margin-top: 40px;
     margin-bottom: 20px;
     }
+
     h1{
     text-align: center;
     }
@@ -11,29 +12,16 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 1000px;
     margin: auto;
-    text-align: center;
-    font-family: arial;
+    padding: 30px 60px;
     }
 
-    .card ul {
-        width: 60%;
-    margin: auto;
-    }
-    .card li {
-        float: left;
-        padding: 2px 5px;
-    }
     .card img {
         width: 50%;
         margin: auto;
         margin-top: 30px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .title {
-    color: grey;
     font-size: 18px;
-    margin-left: 20px;
-    margin-right: 20px;
     }
-

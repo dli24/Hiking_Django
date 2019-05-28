@@ -6,10 +6,9 @@ from django.contrib.auth.decorators import login_required
 
 # IMPORT DJANGO USER MODEL
 from django.contrib.auth.models import User
-
 from .forms import ProfileForm
-
 from .models import Profile
+from hike.models import Hike, Comments, HikeGroup
 
 # Create your views here.
 
@@ -38,7 +37,9 @@ def register(request):
                     user = User.objects.create_user(
                         username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                     user.save()
-                    return redirect('hike_detail')
+                    if user is not None:
+                        auth.login(request, user)
+                        return redirect('profile_create')
         else:
             return render(request, 'accounts/register.html', {'error': 'Passwords do not match'})
     else:
@@ -75,15 +76,31 @@ def profile_create(request):
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
-            return redirect('hike_detail', pk=profile.pk)
+            return redirect('landing')
     else:
         form = ProfileForm()
     return render(request, 'accounts/profile_form.html', {'form': form})
 
 
 @login_required
-def profile(request):
-    user = request.user
-    profile = Profile.objects.get(user=user.pk)
-    return render(request, 'accounts/profile.html', {'profile': profile})
+def profile(request, user_id):
+    profile = Profile.objects.get(user=user_id)
+    if request.user.is_authenticated:
+        user = request.user
+        hikes = Hike.objects.filter(profile=profile.pk)
+        comments = Comments.objects.filter(profile=profile.pk)
+        hike_groups = HikeGroup.objects.filter(profile=profile.pk)
+    return render(request, 'accounts/profile.html', {'profile': profile,'hikes':hikes, 'comments': comments, 'hike_groups': hike_groups, 'user': user})
 
+
+@login_required
+def profile_edit(request, user_id):
+    profile = Profile.objects.get(user=user_id)
+    if request.method == "POST":
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            profile = form.save()
+            return redirect('profile', user_id=user_id)
+    else:
+        form = ProfileForm(instance=profile)
+        return render(request, 'accounts/profile_form.html', {'form':form})
