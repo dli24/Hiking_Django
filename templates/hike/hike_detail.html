@@ -4,7 +4,6 @@
 {% block titleContent %}{{ hike.title }}{% endblock %}
 {% block cssLink %}<link rel="stylesheet" href="{% static 'hike_detail.css' %}" />{% endblock %}
 {% block scripts %}
-<script src="{% static 'script/hike_detail.js' %}"></script>
 <script>
 function initMap() {
     // The location of Uluru
@@ -23,37 +22,36 @@ function initMap() {
 
 
 <div class="main">
-
+	<img src="{{ hike.picture }}" alt="hike-photo" >
 	<h1>{{ hike.title }}</h1>
 
-	
-	<img src="{{ hike.picture }}" alt="hike-photo" >
-	
 	<p>{{ hike.description }}</p>
 </div>
-<div>
-	<h3><a href="{% url 'comment_new' pk=hike.pk %}">Comment</a></h3>
+<div class="comments">
+	<h4>Comments:</a></h4>
 	<ul>
 		{% for comment in comments %}
-		<div class="comments">
-			<p><span class="username">{{ user.username }}:</span> {{ comment.body }}</p>
-			<p><span class="rating">Ratings:</span> {{ comment.rating }}</p>
-		</div>
+		<li class="comment">
+			<span class="username">{{ user.username }}:</span> {{ comment.body }}
+		</li>
 		{% endfor %}
 	</ul>
-	
+	<a href="{% url 'comment_new' pk=hike.pk %}">Add a comment</a>
+
 </div>
-<div>
-		<h3><a href="#">(+) Join Hike</a></h3>
+<div class="joinUs">
+		<h4>Who's going:</h4>
+		* {% for hiker in hike_group %}
+			{{hiker.profile.user.username}} *
+		{% endfor %}<br/>
+		<a href="{% url 'hike_join' pk=hike.pk %}">(+) Join this hike</a>
 </div>
 
-	
-	
+
+
 	<!-- Google  Map -->
-				<h3 class="location">Locations</h3>
 	<!--The div element for the map -->
 	<div id="map"></div>
 
 
 {% endblock %}
-

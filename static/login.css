@@ -1,14 +1,13 @@
 .loginTitle {
     margin-left: 43%;
     font-size: 3em;
-    font-family: 'fantasy';
     font-weight: bolder;
 }
 .loginForm form label{
     margin-left: 33%;
 }
 .loginForm form .username {
-    margin-left: 10px;    
+    margin-left: 10px;
 }
 .loginForm form .password {
     margin-left: 14.5px;
