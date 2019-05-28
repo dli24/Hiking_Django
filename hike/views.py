@@ -117,19 +117,16 @@ def comment_detail(request, hike_id):
   else:
     return render(request, 'hike/hike_detail.html', {'hike':hike})
 
-
 @login_required
 def hike_join(request, pk):
    hike = Hike.objects.get(pk=pk)
    user = request.user
    profile = Profile.objects.get(user=user.pk)
+  #  HikeGroup.hike.objects.save(hike=instance)
+  #  HikeGroup.profile.objects.save(profile=instance)
    HikeGroup.profile = profile
    HikeGroup.hike = hike
-   #HikeGroup.save()
-   print(HikeGroup.hike,  "HikeGroup.hike")
+   #hikegroup = HikeGroup.save()
+   print(HikeGroup.hike, "HikeGroup.hike")
    print(HikeGroup.profile, "HikeGroup.profile")
-
    return render(request, 'hike/hike_detail.html', {'hike': hike, 'user':user, 'HikeGroup':HikeGroup})
-  
-# @login_required
-# def hike_unjoin(request, pk):

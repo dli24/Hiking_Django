@@ -1,9 +1,11 @@
-
 {% extends 'base.html' %}
 {% load static %}
 {% block titleContent %}{{ hike.title }}{% endblock %}
 {% block cssLink %}<link rel="stylesheet" href="{% static 'hike_detail.css' %}" />{% endblock %}
-
+{% block scripts %}
+<script src="{% static 'script/hike_detail.js' %}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&callback=initMap"></script>
+{% endblock %}
 {% block content %}
 
 
@@ -18,8 +20,8 @@
 	
 	<p>{{ hike.description }}</p>
 </div>
-<h4> Add Comment || Join Hike ||</h4>
-<div>
+
+<div class="comments	">
 	<h3><a href="{% url 'comment_new' pk=hike.pk %}">(+) Add Comment</a></h3>
 	<ul>
 		{% for comment in comments %}
@@ -36,13 +38,20 @@
 	
 </div>
 <div>
-		<h3><a href="{% url 'hike_join' pk=hike.pk %}">(+) Join Hike</a></h3>
-		<h3>{{ HikeGroup.hike }}</h3>
+		<h3><a href="{% url 'hike_join' pk=hike.pk %}" class="local-link"	>(+) Join Hike</a></h3>
+		<!-- <h3>{{ HikeGroup.hike }}</h3> -->
 		<h3>{{ HikeGroup.profile }}</h3>
 
 </div>
 
-<h3><a href="{% url 'hike_edit' pk=hike.pk %}">(+) Edit Hike</a></h3>
+<!-- <div>
+		<form action="hike_join" method="POST">
+				{% csrf_token %}
+				<button type="submit">Save</button>
+		</form>
+</div> -->
+
+<h3><a href="{% url 'hike_edit' pk=hike.pk %}" class="local-link">(+) Edit Hike</a></h3>
 
 	
 	
