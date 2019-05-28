@@ -6,17 +6,9 @@ from django.contrib.auth.decorators import login_required
 
 # IMPORT DJANGO USER MODEL
 from django.contrib.auth.models import User
-
 from .forms import ProfileForm
-
 from .models import Profile
-
-from accounts.models import Profile
-
 from hike.models import Hike, Comments, HikeGroup
-
-
-
 
 # Create your views here.
 
@@ -90,8 +82,6 @@ def profile_create(request):
     return render(request, 'accounts/profile_form.html', {'form': form})
 
 
-
-
 @login_required
 def profile(request, user_id):
     profile = Profile.objects.get(user=user_id)
@@ -99,8 +89,8 @@ def profile(request, user_id):
         user = request.user
         hikes = Hike.objects.filter(profile=profile.pk)
         comments = Comments.objects.filter(profile=profile.pk)
-        hike_group = HikeGroup.objects.filter(profile=profile.pk)
-    return render(request, 'accounts/profile.html', {'profile': profile,'hikes':hikes, 'comments': comments, 'user': user, })
+        hike_groups = HikeGroup.objects.filter(profile=profile.pk)
+    return render(request, 'accounts/profile.html', {'profile': profile,'hikes':hikes, 'comments': comments, 'hike_groups': hike_groups, 'user': user})
 
 
 @login_required
