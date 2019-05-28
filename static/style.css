@@ -43,6 +43,12 @@ nav.main-navigation ul.nav-list {
     margin-top: 15px;
 }
 
+.nav-link.activeNav {
+  color: white;
+  background-color: #4169e1;
+  text-decoration: none;
+}
+
 a.nav-link {
     text-decoration: none;
     font-size: 18px;
@@ -196,6 +202,9 @@ html,body{
     }
 
 
+a {
+  text-decoration: none;
+}
 
 a:link {
     color: blue;
@@ -263,10 +272,6 @@ footer .wrap {
     z-index:-3;
 }
 
-
-html{
-    scroll-behavior: smooth;
-}
 
 /* -------------------------
         Media Queries

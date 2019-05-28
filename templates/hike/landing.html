@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% load static %}
 
@@ -7,11 +7,7 @@
 {% block cssLink %}<link rel="stylesheet" href="{% static 'landing_page.css' %}" />
 {% endblock %}
 
-{% block scripts %}
-<script src="{% static 'script/nav-link.js' %}"></script>
-{% endblock %}
-
-{% block content %} 
+{% block content %}
 
 
 <!-- hero -->
@@ -19,13 +15,13 @@
 <div class="main-landing">
     <img  src="/static/image/hiker-group.jpg" alt="hiker-group" >
     <h1>Welcome to ........</h1>
-    
+
     <p>
-    
+
     Why do we use it?
     It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-    
-    
+
+
     5
       paragraphs
       words
@@ -34,18 +30,18 @@
       Start with 'Lorem
     ipsum dolor sit amet...'
     </p>
-    
+
 
     <h3 id="hikelist">Upcoming ......</h3>
     </div>
-    
-    
-    
+
+
+
     <!-- upcomming -->
     <div class="content">
       <div class="ban-bottom-w3l">
           <div class="row grid-divider col1">
-            {% for hike in hikes|slice:":3" %}   
+            {% for hike in hikes|slice:":3" %}
             <div class="col-sm-4">
               <div class="col-padding">
                 <img class="img-responsive" src="{{ hike.picture }}" alt="hike-photo" > <br>
