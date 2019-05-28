@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  label {
+    font-weight: 600;
+    padding-left: 5px;
+  }
+  
+  .registerForm {
+    border: 1px solid #0c0c0c;
+    padding: 25px;
+    margin: 5px 0 22px 0;
+  }
+  /* Set a style for the submit button */
+  .registerButton {
+    background-color: #4169e1;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .registerButton:hover {
+    opacity: 1;
+  }
+  
