@@ -9,53 +9,44 @@
 
 
 
-<h1>Profile</h1>
 <div class="card">
-<img src="{{ profile.picture }}" alt="User Profile" />
-<h1>{{ profile.user.username }}</h1>
+  <h1>{{ profile.user.username }}'s profile</h1>
+<img src="{{ profile.picture }}" alt="{{ profile.user.username }}" />
 
-<p class="title">{{ profile.bio }}</p>
-
-
-        <h4>Created Hikes ...</h4>
+<p class="title">
+  {{ profile.bio }}
+  <span class="social-links" >
+        <a href="{% url 'profile_edit' user_id=profile.user.id %}" style="font-size: initial; padding-top:0"><i class="fas fa-edit"></i></a>
+  </span>
+</p>
+      {% if hikes %}
+        <h4>Created hikes</h4>
         {% for hike in hikes%}
         <ul>
         <li><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ hike.title }}</a></li>
         </ul>
         {% endfor %}
+      {% endif %}
 
-
-        <h4>SignedUp Hikes ...</h4>
-        {% for hike in hike_groups %} 
+      {% if hike_groups %}
+        <h4>SignedUp for hikes</h4>
+        {% for hike in hike_groups %}
         <ul>
-        <li><a href="#">{{ hike.hike.title }}</a></li>
+        <li><a href="{% url 'hike_detail' hike_id=hike.hike.id %}">{{ hike.hike.title }}</a></li>
         </ul>
         {% endfor %}
+      {% endif %}
 
-
-
-        <!--Error  =>  {{hike.hike.id}} for the signed up hikes ids for the href   -->
-        <!-- <h4>SignedUp Hikes ...</h4>
-        {% for hike in hike_groups %} 
+        {% if comments %}
+        <h4>Commented on hikes</h4>
+        {% for comment in comments%}
         <ul>
-        <li><a href="{{hike.hike.id}}">{{ hike.hike.title }}</a></li>
-        </ul>
-        {% endfor %} -->
-
-
-
-
-        <h4>Review Hikes ...</h4>
-        {% for comment in comments%} 
-        <ul>
-        <li>{{ comment.body }}</li>
+        <li><a href="{% url 'hike_detail' hike_id=comment.hike.id %}">{{ comment.hike.title }}</a></li>
         </ul>
         {% endfor %}
+      {% endif %}
 
 
-<div class="social-links">
-        <a href="{% url 'profile_edit' user_id=profile.user.id %}"><i class="fas fa-edit"></i></a>
-</div>
 
 </div>
 
