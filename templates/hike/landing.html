@@ -7,6 +7,10 @@
 {% block cssLink %}<link rel="stylesheet" href="{% static 'landing_page.css' %}" />
 {% endblock %}
 
+{% block scripts %}
+<script src="{% static 'script/nav-link.js' %}"></script>
+{% endblock %}
+
 {% block content %} 
 
 
@@ -31,7 +35,8 @@
     ipsum dolor sit amet...'
     </p>
     
-    <h3>Upcoming ......</h3>
+
+    <h3 id="hikelist">Upcoming ......</h3>
     </div>
     
     
@@ -40,15 +45,14 @@
     <div class="content">
       <div class="ban-bottom-w3l">
           <div class="row grid-divider col1">
-            {% for hike in hikes %}    
+            {% for hike in hikes|slice:":3" %}   
             <div class="col-sm-4">
               <div class="col-padding">
                 <img class="img-responsive" src="{{ hike.picture }}" alt="hike-photo" > <br>
                 <h3><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ hike.title }}</a></h3>
             <ul>
-            <li><strong> Name : </strong> {{ hike.title}}</li>
             <li><strong> Day - Time : </strong>  {{hike.hike_date}}</li>
-            <li><strong> Description : </strong> {{hike.description}}</li>
+            <li class="limit"><strong> Description : </strong> {{hike.description}}</li>
             <li><strong> Difficulty : </strong> {{hike.difficulty}}</li>
             </ul>
               </div>
@@ -58,11 +62,6 @@
         </div>
       </div>
     </div>
-      
-
-      <div class="calender-landing">
-        <h4> <a href="{% url 'hike_calendar' %}" class="nav-link">Calender</a></h4>
-      </div>
 
 
 

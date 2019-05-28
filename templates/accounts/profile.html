@@ -1,4 +1,4 @@
-{% extends 'base.html'%} 
+{% extends 'base.html'%}
 {% load static %}
 {% block titleContent %}Profile of {{ profile.user.username }}{% endblock %}
 {% block cssLink %}<link rel="stylesheet" href="{% static 'profile.css' %}" />{% endblock %}
@@ -10,39 +10,51 @@
 
 
 <h1>Profile</h1>
-        <div class="col-md-12">
-                <div class="heading">				
-                        <img src="https://image.ibb.co/cbCMvA/logo.png" />
-                </div>
-        </div>	
 <div class="card">
 <img src="{{ profile.picture }}" alt="User Profile" />
 <h1>{{ profile.user.username }}</h1>
 
 <p class="title">{{ profile.bio }}</p>
+
+
         <h4>Created Hikes ...</h4>
+        {% for hike in hikes%}
         <ul>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-</ul>
+        <li><a href="{% url 'hike_detail' hike_id=hike.id %}">{{ hike.title }}</a></li>
+        </ul>
+        {% endfor %}
+
 
         <h4>SignedUp Hikes ...</h4>
+        {% for hike in hike_groups %} 
         <ul>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-</ul>
+        <li><a href="#">{{ hike.hike.title }}</a></li>
+        </ul>
+        {% endfor %}
+
+
+
+        <!--Error  =>  {{hike.hike.id}} for the signed up hikes ids for the href   -->
+        <!-- <h4>SignedUp Hikes ...</h4>
+        {% for hike in hike_groups %} 
+        <ul>
+        <li><a href="{{hike.hike.id}}">{{ hike.hike.title }}</a></li>
+        </ul>
+        {% endfor %} -->
+
+
+
 
         <h4>Review Hikes ...</h4>
+        {% for comment in comments%} 
         <ul>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-<li>Contrary to popular belief, Lorem Ipsum is not simply random text. </li>
-</ul>
-<div style="margin: 24px 0;">
-<a href="{% url 'profile_edit' user_id=profile.user.id %}"><i class="fas fa-edit"></i></a> 
-<a href="#"><i class="fas fa-trash-alt"></i></a>  
+        <li>{{ comment.body }}</li>
+        </ul>
+        {% endfor %}
+
+
+<div class="social-links">
+        <a href="{% url 'profile_edit' user_id=profile.user.id %}"><i class="fas fa-edit"></i></a>
 </div>
 
 </div>
